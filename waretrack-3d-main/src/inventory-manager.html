@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Inventory Manager</title>
+</head>
+<body>
+  <div class="im-shell">
+    <aside class="im-sidebar" aria-label="Inventory Manager navigation">
+      <a class="im-brand" href="/" aria-label="DisruptionIQ home">
+        <span class="im-brand-mark">D</span><span>Disruption<span>IQ</span></span>
+      </a>
+      <nav class="im-nav">
+        <p>Inventory workspace</p>
+        <a href="#overview" class="is-active" aria-current="page"><span>▦</span>Overview</a>
+        <a href="#inventory"><span>▤</span>Inventory Management</a>
+        <a href="#replenishment"><span>↻</span>Stock Replenishment</a>
+        <a href="#movements"><span>⇄</span>Stock Movements</a>
+        <a href="#receiving"><span>⇣</span>Stock Receiving</a>
+        <a href="#adjustments"><span>±</span>Stock Adjustments</a>
+        <a href="#counts"><span>☷</span>Cycle Counting</a>
+        <a href="#suppliers"><span>♙</span>Suppliers &amp; Purchase Orders</a>
+        <a href="#alerts"><span>△</span>Inventory Alerts <b id="im-alert-count">0</b></a>
+        <a href="#reports"><span>▥</span>Reports &amp; Analytics</a>
+        <p class="im-nav-general">General</p>
+        <a href="#activity"><span>◷</span>Activity Log</a>
+        <a href="#settings"><span>⚙</span>Settings</a>
+      </nav>
+      <div class="im-user">
+        <span class="im-avatar">IM</span>
+        <span><strong id="im-user-name">Inventory Manager</strong><small>Demo workspace</small></span>
+      </div>
+      <a class="im-exit" href="/">← Exit workspace</a>
+    </aside>
+
+    <div class="im-content">
+      <header class="im-topbar">
+        <span class="im-role">Inventory Manager</span>
+        <div class="im-top-actions">
+          <label class="im-search"><span>⌕</span><input id="im-global-search" type="search" placeholder="Search products..." aria-label="Search products"></label>
+          <label class="im-warehouse">Warehouse<select id="im-warehouse-select"><option value="all">All warehouses</option><option value="WH-001">WH-001 · Central</option></select></label>
+          <button type="button" class="im-icon-button" id="im-notifications-button" aria-label="Open inventory alerts">♧<span id="im-unread-count">0</span></button>
+          <span class="im-avatar im-avatar-top" aria-label="Inventory Manager">IM</span>
+        </div>
+      </header>
+
+      <main class="im-page">
+        <section class="im-view" id="overview" data-im-page="overview">
+          <div class="im-page-heading">
+            <div><p class="im-eyebrow">INVENTORY CONTROL CENTER</p><h1>Inventory overview</h1><p>Stock health, replenishment, receiving, and inventory accuracy at a glance.</p></div>
+            <span class="im-demo-tag"><i></i>Demo data · WH-001</span>
+          </div>
+          <div class="im-kpis" id="im-overview-kpis"></div>
+          <div class="im-chart-grid" id="im-overview-charts"></div>
+          <div class="im-overview-bottom">
+            <article class="im-card">
+              <div class="im-card-heading"><div><h2>Inventory requiring attention</h2><p>Prioritized stock and delivery exceptions</p></div><a href="#alerts">View all →</a></div>
+              <div id="im-attention-list" class="im-attention-list"></div>
+            </article>
+            <article class="im-card">
+              <div class="im-card-heading"><div><h2>Recent inventory activity</h2><p>Latest stock operations</p></div><a href="#activity">Activity log →</a></div>
+              <div id="im-recent-activity" class="im-recent-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="im-view" id="inventory" data-im-page="inventory" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">PRODUCT &amp; STOCK RECORDS</p><h1>Inventory management</h1><p>Search, filter, inspect, and export the shared product stock records.</p></div><button class="im-button" id="im-inventory-export">Export CSV</button></div>
+          <div class="im-kpis im-kpis-compact" id="im-inventory-kpis"></div>
+          <article class="im-card">
+            <div class="im-card-heading"><div><h2>Products &amp; stock</h2><p id="im-inventory-result-count">All products</p></div><button class="im-button im-button-light" id="im-inventory-clear">Clear filters</button></div>
+            <div class="im-filters">
+              <label>Search<input id="im-inventory-search" type="search" placeholder="Product, ID, or SKU"></label>
+              <label>Warehouse<select id="im-inventory-warehouse"><option value="all">All warehouses</option><option value="WH-001">WH-001</option></select></label>
+              <label>Category<select id="im-inventory-category"><option value="all">All categories</option></select></label>
+              <label>Stock status<select id="im-inventory-status"><option value="all">All statuses</option><option value="in-stock">In stock</option><option value="low-stock">Low stock</option><option value="out-of-stock">Out of stock</option><option value="overstock">Overstock</option></select></label>
+              <label>Sort by<select id="im-inventory-sort"><option value="name">Product name</option><option value="quantity-asc">Quantity: low to high</option><option value="quantity-desc">Quantity: high to low</option><option value="updated-desc">Last updated</option></select></label>
+            </div>
+            <div class="im-table-wrap"><table><thead><tr><th>Product</th><th>SKU / Category</th><th>Total</th><th>Reserved</th><th>Available</th><th>Warehouse / Location</th><th>Reorder / Max</th><th>Status</th><th>Updated</th><th>Actions</th></tr></thead><tbody id="im-inventory-body"></tbody></table></div>
+            <div class="im-pagination"><span id="im-pagination-label"></span><div><button id="im-page-previous" class="im-button im-button-light" type="button">Previous</button><button id="im-page-next" class="im-button im-button-light" type="button">Next</button></div></div>
+          </article>
+        </section>
+
+        <section class="im-view" id="replenishment" data-im-page="replenishment" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">PREVENT SHORTAGES</p><h1>Stock replenishment</h1><p>Recommendations are based on current available stock, reorder levels, and incoming orders.</p></div><button class="im-button" id="im-new-replenishment">+ Request replenishment</button></div>
+          <div class="im-kpis im-kpis-compact" id="im-replenishment-kpis"></div>
+          <article class="im-card"><div class="im-card-heading"><div><h2>Replenishment requests</h2><p>Requests requiring review or awaiting procurement action</p></div><label class="im-inline-filter">Status<select id="im-replenishment-status"><option value="all">All requests</option><option value="awaiting-approval">Awaiting approval</option><option value="approved">Approved</option><option value="ordered">Ordered</option><option value="received">Received</option></select></label></div><div class="im-table-wrap"><table><thead><tr><th>Request</th><th>Product</th><th>Available / reorder</th><th>Suggested qty</th><th>Supplier</th><th>Priority</th><th>Expected</th><th>Status</th><th>Action</th></tr></thead><tbody id="im-replenishment-body"></tbody></table></div></article>
+          <p class="im-note">Purchase requests remain subject to Procurement approval. This role cannot approve or create purchase orders.</p>
+        </section>
+
+        <section class="im-view" id="movements" data-im-page="movements" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">AUDITABLE STOCK HISTORY</p><h1>Stock movements</h1><p>Every receipt, dispatch, adjustment, reservation, and transfer is recorded here.</p></div><div class="im-button-row"><button class="im-button im-button-light" id="im-new-movement">+ Record movement</button><button class="im-button" id="im-movement-export">Export CSV</button></div></div>
+          <article class="im-card"><div class="im-filters">
+            <label>Search<input id="im-movement-search" type="search" placeholder="Movement, product, or reference"></label>
+            <label>Movement type<select id="im-movement-type"><option value="all">All types</option><option>Received</option><option>Dispatched</option><option>Transferred</option><option>Adjusted</option><option>Reserved</option><option>Released</option><option>Returned</option><option>Damaged</option></select></label>
+            <label>Warehouse<select id="im-movement-warehouse"><option value="all">All warehouses</option><option value="WH-001">WH-001</option></select></label>
+            <label>From date<input id="im-movement-from" type="date"></label><label>To date<input id="im-movement-to" type="date"></label>
+          </div><div class="im-table-wrap"><table><thead><tr><th>Movement ID</th><th>Product</th><th>Type</th><th>Previous</th><th>Change</th><th>New quantity</th><th>Source → destination</th><th>Reference</th><th>Date / User</th><th>Details</th></tr></thead><tbody id="im-movement-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="receiving" data-im-page="receiving" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">INBOUND INVENTORY</p><h1>Stock receiving</h1><p>Record accepted, damaged, and missing quantities against expected deliveries.</p></div></div>
+          <div class="im-kpis im-kpis-compact" id="im-receiving-kpis"></div>
+          <article class="im-card"><div class="im-card-heading"><div><h2>Incoming deliveries</h2><p>Stock is added only after the accepted quantity is confirmed.</p></div><label class="im-inline-filter">Status<select id="im-receiving-status"><option value="all">All deliveries</option><option value="pending">Pending receipt</option><option value="expected">Expected</option><option value="delayed">Delayed</option><option value="partial">Partial</option><option value="received">Received</option></select></label></div><div class="im-table-wrap"><table><thead><tr><th>Delivery / PO</th><th>Supplier</th><th>Product</th><th>Expected</th><th>Received</th><th>Accepted / Damaged</th><th>Expected date</th><th>Inspection</th><th>Status</th><th>Action</th></tr></thead><tbody id="im-receiving-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="adjustments" data-im-page="adjustments" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">CONTROLLED QUANTITY CHANGES</p><h1>Stock adjustments</h1><p>Submit verified discrepancies for approval. Submitting a request never changes stock by itself.</p></div><button class="im-button" id="im-new-adjustment">+ Request adjustment</button></div>
+          <article class="im-card"><div class="im-card-heading"><div><h2>Adjustment requests</h2><p>Stock updates only after approval by an authorised role.</p></div><label class="im-inline-filter">Status<select id="im-adjustment-status"><option value="all">All requests</option><option value="pending-approval">Pending approval</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label></div><div class="im-table-wrap"><table><thead><tr><th>Adjustment</th><th>Product</th><th>System qty</th><th>Actual qty</th><th>Difference</th><th>Reason</th><th>Requested by</th><th>Status</th><th>Audit trail</th></tr></thead><tbody id="im-adjustment-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="counts" data-im-page="counts" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">INVENTORY ACCURACY</p><h1>Cycle counting</h1><p>Compare physical counts with system quantities and preserve all discrepancies.</p></div><button class="im-button" id="im-new-count">+ Start cycle count</button></div>
+          <div class="im-kpis im-kpis-compact" id="im-count-kpis"></div>
+          <article class="im-card"><div class="im-card-heading"><div><h2>Cycle count history</h2><p>Discrepancies can be submitted as adjustment requests.</p></div><label class="im-inline-filter">Results<select id="im-count-filter"><option value="all">All counts</option><option value="discrepancies">With discrepancies</option><option value="accurate">No discrepancies</option></select></label></div><div class="im-table-wrap"><table><thead><tr><th>Count ID</th><th>Warehouse / location</th><th>Counted product</th><th>System / actual</th><th>Products counted</th><th>Discrepancies</th><th>Accuracy</th><th>Assigned user</th><th>Count date</th><th>Status</th></tr></thead><tbody id="im-count-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="suppliers" data-im-page="suppliers" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">INBOUND SUPPLY VISIBILITY</p><h1>Suppliers &amp; purchase orders</h1><p>Monitor supplier delivery performance and PO progress. Procurement decisions remain with authorised roles.</p></div></div>
+          <article class="im-card"><div class="im-card-heading"><div><h2>Suppliers</h2><p>Supplier contacts and delivery performance</p></div></div><div class="im-table-wrap"><table><thead><tr><th>Supplier ID</th><th>Supplier</th><th>Products</th><th>Lead time</th><th>Delivery performance</th><th>Active POs</th><th>Status</th></tr></thead><tbody id="im-supplier-body"></tbody></table></div></article>
+          <article class="im-card im-spaced"><div class="im-card-heading"><div><h2>Purchase orders</h2><p>Read-only procurement visibility</p></div></div><div class="im-table-wrap"><table><thead><tr><th>PO</th><th>Supplier</th><th>Products</th><th>Ordered</th><th>Received</th><th>Remaining</th><th>Order date</th><th>Expected</th><th>Status</th></tr></thead><tbody id="im-po-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="alerts" data-im-page="alerts" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">INVENTORY EXCEPTIONS</p><h1>Inventory alerts</h1><p>Acknowledge, investigate, and resolve stock-related warnings without losing their history.</p></div></div>
+          <div class="im-filters"><label>Severity<select id="im-alert-severity"><option value="all">All severities</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label><label>Status<select id="im-alert-status"><option value="all">All statuses</option><option value="open">Open</option><option value="acknowledged">Acknowledged</option><option value="in-progress">In progress</option><option value="resolved">Resolved</option></select></label></div>
+          <div id="im-alert-list" class="im-alert-list"></div>
+        </section>
+
+        <section class="im-view" id="reports" data-im-page="reports" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">INVENTORY PERFORMANCE</p><h1>Reports &amp; analytics</h1><p>Reports derive from the same product, movement, count, replenishment, and receiving records.</p></div><div class="im-button-row"><button class="im-button im-button-light" id="im-report-print">Print / PDF</button><button class="im-button" id="im-report-export">Export CSV</button></div></div>
+          <article class="im-card"><div class="im-filters">
+            <label>Report<select id="im-report-type"><option value="summary">Inventory summary</option><option value="low-stock">Low stock</option><option value="out-of-stock">Out of stock</option><option value="overstock">Overstock</option><option value="movements">Stock movements</option><option value="accuracy">Stock accuracy</option><option value="replenishment">Replenishment</option><option value="warehouse">Warehouse inventory</option><option value="valuation">Stock valuation</option></select></label>
+            <label>Warehouse<select id="im-report-warehouse"><option value="all">All warehouses</option><option value="WH-001">WH-001</option></select></label>
+            <label>Category<select id="im-report-category"><option value="all">All categories</option></select></label>
+            <label>Supplier<select id="im-report-supplier"><option value="all">All suppliers</option></select></label>
+            <label>Status<select id="im-report-status"><option value="all">All statuses</option><option value="in-stock">In stock</option><option value="low-stock">Low stock</option><option value="out-of-stock">Out of stock</option><option value="overstock">Overstock</option></select></label>
+            <label>From date<input id="im-report-from" type="date"></label><label>To date<input id="im-report-to" type="date"></label>
+          </div><div class="im-report-summary" id="im-report-summary"></div><div class="im-chart-grid im-report-charts" id="im-report-charts"></div><div class="im-table-wrap"><table><thead id="im-report-head"></thead><tbody id="im-report-body"></tbody></table></div></article>
+          <p class="im-note">Stock valuation is unavailable until unit cost data is provided. Aging analysis requires lot or receipt dates that are not present in the demo data.</p>
+        </section>
+
+        <section class="im-view" id="activity" data-im-page="activity" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">AUDIT TRAIL</p><h1>Activity log</h1><p>Inventory changes and workflow actions, including the user, time, quantity change, and reference.</p></div><button class="im-button im-button-light" id="im-activity-export">Export CSV</button></div>
+          <article class="im-card"><div class="im-table-wrap"><table><thead><tr><th>Date &amp; time</th><th>User</th><th>Action</th><th>Product / record</th><th>Previous</th><th>New</th><th>Reference</th></tr></thead><tbody id="im-activity-body"></tbody></table></div></article>
+        </section>
+
+        <section class="im-view" id="settings" data-im-page="settings" hidden>
+          <div class="im-page-heading"><div><p class="im-eyebrow">PERSONAL WORKSPACE</p><h1>Settings</h1><p>Manage display and notification preferences. Role permissions are managed by an administrator.</p></div></div>
+          <article class="im-card im-settings">
+            <label>Display name<input id="im-settings-name" value="Inventory Manager"></label>
+            <label>Default warehouse<select id="im-settings-warehouse"><option value="WH-001">WH-001 · Central Distribution Warehouse</option></select></label>
+            <label>Inventory rows per page<select id="im-settings-page-size"><option value="8">8 rows</option><option value="12">12 rows</option><option value="24">24 rows</option></select></label>
+            <label class="im-checkbox"><input type="checkbox" id="im-settings-notifications" checked>Enable inventory notifications</label>
+            <label class="im-checkbox"><input type="checkbox" id="im-settings-low-stock" checked>Notify when stock reaches reorder level</label>
+            <p class="im-permission-note">Role: Inventory Manager · Cannot approve purchase orders or manage role permissions.</p>
+            <button class="im-button" id="im-settings-save">Save preferences</button><p id="im-settings-status" aria-live="polite"></p>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="im-dialog" class="im-dialog"><form method="dialog" id="im-dialog-form"><div class="im-dialog-heading"><div><p class="im-eyebrow">INVENTORY WORKFLOW</p><h2 id="im-dialog-title"></h2></div><button type="button" class="im-dialog-close" id="im-dialog-close" aria-label="Close dialog">×</button></div><div id="im-dialog-content"></div><p id="im-dialog-error" class="im-form-error" aria-live="polite"></p><div class="im-dialog-actions"><button type="button" class="im-button im-button-light" id="im-dialog-cancel">Cancel</button><button type="submit" class="im-button" id="im-dialog-submit">Submit</button></div></form></dialog>
+  <dialog id="im-detail-dialog" class="im-dialog im-detail-dialog"><div class="im-dialog-heading"><div><p class="im-eyebrow" id="im-detail-eyebrow">PRODUCT DETAILS</p><h2 id="im-detail-title"></h2></div><button type="button" class="im-dialog-close" id="im-detail-close" aria-label="Close details">×</button></div><div id="im-detail-content"></div></dialog>
+  <dialog id="im-notification-dialog" class="im-dialog"><div class="im-dialog-heading"><div><p class="im-eyebrow">INVENTORY UPDATES</p><h2>Notifications</h2></div><button type="button" class="im-dialog-close" id="im-notification-close" aria-label="Close notifications">×</button></div><div id="im-notification-list" class="im-attention-list"></div><div class="im-dialog-actions"><button type="button" class="im-button im-button-light" id="im-mark-notifications-read">Mark all read</button></div></dialog>
+  <script type="module" src="/src/inventory-manager-page.js"></script>
+</body>
+</html>

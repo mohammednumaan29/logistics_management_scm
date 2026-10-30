@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Logistics &amp; Transportation Manager</title>
+</head>
+<body>
+  <div class="lm-shell">
+    <aside class="lm-sidebar" aria-label="Logistics Manager navigation">
+      <a class="lm-brand" href="/" aria-label="DisruptionIQ home"><span class="lm-brand-mark">D</span><span>Disruption<span>IQ</span></span></a>
+      <nav class="lm-nav">
+        <p>Dashboard</p><a href="#overview" class="is-active" aria-current="page"><span>▦</span>Overview</a>
+        <p>Shipments</p><a href="#shipments"><span>⇢</span>Shipment Management</a>
+        <p>Transportation</p><a href="#planning"><span>◷</span>Transport Planning</a><a href="#vehicles"><span>▰</span>Vehicle Management</a><a href="#carriers"><span>♧</span>Carrier Management</a><a href="#tracking"><span>⌖</span>Delivery Tracking</a>
+        <p>Exceptions</p><a href="#exceptions"><span>△</span>Delays &amp; Disruptions <b id="lm-exception-count">0</b></a>
+        <p>Planning</p><a href="#routes"><span>↗</span>Routes &amp; Scheduling</a>
+        <p>Insights</p><a href="#reports"><span>▥</span>Reports &amp; Analytics</a>
+        <p class="lm-general">Other</p><a href="#activity"><span>◴</span>Activity Log</a><a href="#notifications"><span>♢</span>Notifications <b id="lm-notification-count">0</b></a><a href="#settings"><span>⚙</span>Settings</a>
+      </nav>
+      <div class="lm-user"><span class="lm-avatar">LM</span><span><strong id="lm-user-name">Logistics Manager</strong><small>Demo workspace</small></span></div>
+      <a class="lm-exit" href="/">← Exit workspace</a>
+    </aside>
+    <div class="lm-content">
+      <header class="lm-topbar"><span class="lm-role">Logistics &amp; Transportation Manager</span><div class="lm-top-actions">
+        <label class="lm-search"><span>⌕</span><input id="lm-global-search" type="search" placeholder="Search shipments..." aria-label="Search shipments"></label>
+        <label class="lm-region">Region<select id="lm-region"><option value="all">All regions</option><option value="South">South</option><option value="West">West</option><option value="North">North</option></select></label>
+        <button id="lm-notification-button" class="lm-icon-button" type="button" aria-label="Open notifications">♧<span id="lm-notification-badge">0</span></button>
+        <span class="lm-current-date" id="lm-current-date"></span><span class="lm-avatar lm-avatar-top">LM</span>
+      </div></header>
+      <main class="lm-page">
+        <section class="lm-view" id="overview" data-lm-page="overview">
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">TRANSPORTATION CONTROL CENTER</p><h1>Logistics overview</h1><p>Shipment movement, delivery performance, fleet availability, and urgent transport issues.</p></div><span class="lm-demo-tag"><i></i>Simulated demo data</span></div>
+          <div class="lm-kpis" id="lm-overview-kpis"></div>
+          <div class="lm-charts" id="lm-overview-charts"></div>
+          <div class="lm-overview-bottom">
+            <article class="lm-card"><div class="lm-card-heading"><div><h2>Urgent attention</h2><p>Delayed shipments and transport exceptions</p></div><a href="#exceptions">View exceptions →</a></div><div id="lm-attention-list" class="lm-attention-list"></div></article>
+            <article class="lm-card"><div class="lm-card-heading"><div><h2>Recent transportation activity</h2><p>Latest shipment and fleet updates</p></div><a href="#activity">Activity log →</a></div><div id="lm-recent-activity" class="lm-recent-list"></div></article>
+          </div>
+        </section>
+
+        <section class="lm-view" id="shipments" data-lm-page="shipments" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">SHIPMENT EXECUTION</p><h1>Shipment management</h1><p>Review and update shipment progress from dispatch through confirmed delivery.</p></div><div class="lm-actions"><button class="lm-button lm-button-light" id="lm-create-exception">+ Report delivery issue</button><button class="lm-button" id="lm-export-shipments">Export CSV</button></div></div>
+          <div class="lm-filters"><label>Search<input id="lm-shipment-search" type="search" placeholder="Shipment, order, destination, carrier"></label><label>Status<select id="lm-shipment-status"><option value="all">All statuses</option><option value="pending-dispatch">Pending</option><option value="ready-for-dispatch">Ready for dispatch</option><option value="in-transit">In transit</option><option value="delayed">Delayed</option><option value="out-for-delivery">Out for delivery</option><option value="delivered">Delivered</option><option value="failed">Failed</option><option value="cancelled">Cancelled</option></select></label><label>Carrier<select id="lm-shipment-carrier"><option value="all">All carriers</option></select></label><label>Destination<input id="lm-shipment-destination" type="search" placeholder="Filter destination"></label><label>Region<select id="lm-shipment-region"><option value="all">All regions</option><option value="South">South</option><option value="West">West</option><option value="North">North</option></select></label></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Shipment / Order</th><th>Origin → destination</th><th>Carrier / vehicle</th><th>Dispatch</th><th>Expected / actual</th><th>Status</th><th>Delay</th><th>Actions</th></tr></thead><tbody id="lm-shipment-body"></tbody></table></div></article>
+        </section>
+
+        <section class="lm-view" id="planning" data-lm-page="planning" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">DISPATCH PREPARATION</p><h1>Transport planning</h1><p>Assign a carrier, confirm an available vehicle, and schedule a pending shipment.</p></div></div>
+          <div class="lm-kpis lm-kpis-compact" id="lm-planning-kpis"></div>
+          <article class="lm-card"><div class="lm-card-heading"><div><h2>Shipments awaiting transportation</h2><p>Check delivery deadlines and resource availability before confirming a plan.</p></div></div><div class="lm-table-wrap"><table><thead><tr><th>Plan / Shipment</th><th>Origin → destination</th><th>Planned date</th><th>Carrier</th><th>Vehicle</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead><tbody id="lm-planning-body"></tbody></table></div></article>
+          <article class="lm-card"><div class="lm-card-heading"><div><h2>Resource availability</h2><p>Vehicles already assigned to active shipments cannot be double-booked.</p></div></div><div class="lm-resource-strip" id="lm-resource-strip"></div></article>
+        </section>
+
+        <section class="lm-view" id="vehicles" data-lm-page="vehicles" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">TRANSPORT FLEET</p><h1>Vehicle management</h1><p>Vehicle availability is derived from active shipment assignments and maintenance status.</p></div><button class="lm-button lm-button-light" id="lm-new-vehicle">+ Add demo vehicle</button></div>
+          <div class="lm-kpis lm-kpis-compact" id="lm-vehicle-kpis"></div>
+          <div class="lm-filters"><label>Search<input id="lm-vehicle-search" type="search" placeholder="Vehicle, registration, driver"></label><label>Availability<select id="lm-vehicle-status"><option value="all">All statuses</option><option value="available">Available</option><option value="assigned">Assigned</option><option value="maintenance">Maintenance</option><option value="unavailable">Unavailable</option></select></label></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Vehicle / registration</th><th>Type / capacity</th><th>Location</th><th>Driver</th><th>Current shipment</th><th>Availability</th><th>Status</th><th>Actions</th></tr></thead><tbody id="lm-vehicle-body"></tbody></table></div></article>
+        </section>
+
+        <section class="lm-view" id="carriers" data-lm-page="carriers" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">TRANSPORT PARTNERS</p><h1>Carrier management</h1><p>Compare carrier delivery performance using the shared shipment records.</p></div></div>
+          <div class="lm-kpis lm-kpis-compact" id="lm-carrier-kpis"></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Carrier / ID</th><th>Service regions</th><th>Active shipments</th><th>Total handled</th><th>On-time rate</th><th>Average delay</th><th>Failures</th><th>Status</th><th>Action</th></tr></thead><tbody id="lm-carrier-body"></tbody></table></div></article>
+        </section>
+
+        <section class="lm-view" id="tracking" data-lm-page="tracking" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">SIMULATED CARRIER UPDATES</p><h1>Delivery tracking</h1><p>Illustrative tracking timelines based on demo shipment status; no live carrier integration is connected.</p></div></div>
+          <div class="lm-kpis lm-kpis-compact" id="lm-tracking-kpis"></div>
+          <div class="lm-filters"><label>Search<input id="lm-tracking-search" type="search" placeholder="Shipment or destination"></label><label>Tracking state<select id="lm-tracking-status"><option value="all">All tracking states</option><option value="in-transit">In transit</option><option value="out-for-delivery">Out for delivery</option><option value="delayed">Delayed</option><option value="delivered">Delivered</option><option value="missing-update">Missing update</option></select></label></div>
+          <div id="lm-tracking-list" class="lm-tracking-list"></div>
+        </section>
+
+        <section class="lm-view" id="exceptions" data-lm-page="exceptions" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">DELAYS &amp; DISRUPTIONS</p><h1>Transport exceptions</h1><p>Investigate delivery problems and retain resolution history. Selecting alternatives does not resolve an incident.</p></div><button class="lm-button" id="lm-new-exception">+ Report disruption</button></div>
+          <div class="lm-filters"><label>Severity<select id="lm-exception-severity"><option value="all">All severities</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label><label>Status<select id="lm-exception-status"><option value="all">All statuses</option><option value="open">Open</option><option value="investigating">Investigating</option><option value="resolved">Resolved</option></select></label><label>Type<select id="lm-exception-type"><option value="all">All types</option><option>Traffic congestion</option><option>Vehicle breakdown</option><option>Weather disruption</option><option>Road closure</option><option>Carrier failure</option><option>Missed pickup</option><option>Delivery address issue</option><option>Missing tracking update</option></select></label></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Incident</th><th>Shipment</th><th>Disruption / location</th><th>Severity</th><th>Delay</th><th>Reported</th><th>Assigned</th><th>Status</th><th>Actions</th></tr></thead><tbody id="lm-exception-body"></tbody></table></div></article>
+        </section>
+
+        <section class="lm-view" id="routes" data-lm-page="routes" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">ROUTES &amp; SCHEDULING</p><h1>Routes &amp; schedules</h1><p>Review planned pickup and delivery schedules using available shipment destination data.</p></div><button class="lm-button lm-button-light" id="lm-new-route">+ Plan route</button></div>
+          <div class="lm-kpis lm-kpis-compact" id="lm-route-kpis"></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Route / origin</th><th>Destination</th><th>Vehicle / carrier</th><th>Shipments</th><th>Departure</th><th>Expected arrival</th><th>Status</th><th>Action</th></tr></thead><tbody id="lm-route-body"></tbody></table></div></article>
+          <p class="lm-note">Route geometry and travel-time estimates are not available in the demo; schedules are illustrative operational records.</p>
+        </section>
+
+        <section class="lm-view" id="reports" data-lm-page="reports" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">TRANSPORT PERFORMANCE</p><h1>Reports &amp; analytics</h1><p>Delivery, carrier, vehicle, route, and exception metrics calculated from shipment records.</p></div><div class="lm-actions"><button class="lm-button lm-button-light" id="lm-report-print">Print / PDF</button><button class="lm-button" id="lm-report-export">Export CSV</button></div></div>
+          <article class="lm-card"><div class="lm-filters"><label>Report<select id="lm-report-type"><option value="summary">Shipment summary</option><option value="delivery">Delivery performance</option><option value="delayed">Delayed shipments</option><option value="carrier">Carrier performance</option><option value="vehicle">Vehicle utilisation</option><option value="routes">Route performance</option><option value="exceptions">Delivery exceptions</option><option value="on-time">On-time delivery</option><option value="cost">Transportation cost</option></select></label><label>From date<input id="lm-report-from" type="date"></label><label>To date<input id="lm-report-to" type="date"></label><label>Carrier<select id="lm-report-carrier"><option value="all">All carriers</option></select></label><label>Vehicle<select id="lm-report-vehicle"><option value="all">All vehicles</option></select></label><label>Origin<select id="lm-report-origin"><option value="all">All origins</option></select></label><label>Destination<input id="lm-report-destination" type="search" placeholder="Destination"></label><label>Status<select id="lm-report-status"><option value="all">All statuses</option></select></label><label>Disruption type<select id="lm-report-disruption"><option value="all">All types</option></select></label></div>
+            <div class="lm-report-summary" id="lm-report-summary"></div><div class="lm-charts lm-report-charts" id="lm-report-charts"></div><div class="lm-table-wrap"><table><thead id="lm-report-head"></thead><tbody id="lm-report-body"></tbody></table></div>
+          </article><p class="lm-note">Transportation cost reporting is unavailable until carrier or shipment cost data is provided. Performance figures are based on illustrative demo dates and statuses.</p>
+        </section>
+
+        <section class="lm-view" id="activity" data-lm-page="activity" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">TRANSPORT AUDIT TRAIL</p><h1>Activity log</h1><p>Shipment, carrier, vehicle, tracking, and incident actions.</p></div><button class="lm-button lm-button-light" id="lm-activity-export">Export CSV</button></div>
+          <article class="lm-card"><div class="lm-table-wrap"><table><thead><tr><th>Date &amp; time</th><th>User</th><th>Action</th><th>Shipment / record</th><th>Reference</th><th>Details</th></tr></thead><tbody id="lm-activity-body"></tbody></table></div></article>
+        </section>
+
+        <section class="lm-view" id="notifications" data-lm-page="notifications" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">DELIVERY UPDATES</p><h1>Notifications</h1><p>Open an update to view its associated shipment or disruption.</p></div><button class="lm-button lm-button-light" id="lm-read-all">Mark all read</button></div>
+          <div id="lm-notifications-list" class="lm-notifications-list"></div>
+        </section>
+
+        <section class="lm-view" id="settings" data-lm-page="settings" hidden>
+          <div class="lm-page-heading"><div><p class="lm-eyebrow">PERSONAL WORKSPACE</p><h1>Settings</h1><p>Manage transport workspace preferences. Role permissions are controlled by an administrator.</p></div></div>
+          <article class="lm-card lm-settings"><label>Display name<input id="lm-settings-name" value="Logistics Manager"></label><label>Default operating region<select id="lm-settings-region"><option value="all">All regions</option><option value="South">South</option><option value="West">West</option><option value="North">North</option></select></label><label class="lm-checkbox"><input type="checkbox" id="lm-settings-notifications" checked>Enable logistics notifications</label><p class="lm-permission-note">Role: Logistics &amp; Transportation Manager · Procurement and carrier contract approvals are managed by authorised roles.</p><button class="lm-button" id="lm-settings-save">Save preferences</button><p id="lm-settings-status" aria-live="polite"></p></article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="lm-dialog" class="lm-dialog"><form method="dialog" id="lm-dialog-form"><div class="lm-dialog-heading"><div><p class="lm-eyebrow">LOGISTICS WORKFLOW</p><h2 id="lm-dialog-title"></h2></div><button type="button" id="lm-dialog-close" class="lm-dialog-close" aria-label="Close dialog">×</button></div><div id="lm-dialog-content"></div><p id="lm-dialog-error" class="lm-form-error" aria-live="polite"></p><div class="lm-dialog-actions"><button type="button" class="lm-button lm-button-light" id="lm-dialog-cancel">Cancel</button><button type="submit" class="lm-button" id="lm-dialog-submit">Save</button></div></form></dialog>
+  <dialog id="lm-detail-dialog" class="lm-dialog lm-detail-dialog"><div class="lm-dialog-heading"><div><p class="lm-eyebrow" id="lm-detail-eyebrow">SHIPMENT DETAILS</p><h2 id="lm-detail-title"></h2></div><button type="button" id="lm-detail-close" class="lm-dialog-close" aria-label="Close details">×</button></div><div id="lm-detail-content"></div></dialog>
+  <dialog id="lm-notification-dialog" class="lm-dialog lm-notification-dialog"><div class="lm-dialog-heading"><div><p class="lm-eyebrow">TRANSPORT UPDATES</p><h2>Notifications</h2></div><button type="button" id="lm-notification-close" class="lm-dialog-close" aria-label="Close notifications">×</button></div><div id="lm-notification-modal-list" class="lm-notifications-list"></div><div class="lm-dialog-actions"><button type="button" class="lm-button lm-button-light" id="lm-notification-read-all">Mark all read</button></div></dialog>
+  <script type="module" src="/src/logistics-manager-page.js"></script>
+</body>
+</html>

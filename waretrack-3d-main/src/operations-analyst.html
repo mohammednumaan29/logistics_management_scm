@@ -1,0 +1,414 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Operations Analyst</title>
+</head>
+<body>
+  <div class="analyst-app-shell">
+    <aside class="analyst-sidebar" aria-label="Main navigation">
+      <a class="analyst-brand" href="/" aria-label="DisruptionIQ home">
+        <span class="analyst-brand-mark" aria-hidden="true">D</span>
+        <span>Disruption<span>IQ</span></span>
+      </a>
+
+      <nav class="analyst-nav">
+        <p class="analyst-nav-label">Main workspace</p>
+        <a class="analyst-nav-link is-active" href="#overview" aria-current="page"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.5"/><rect x="13.5" y="10.5" width="7" height="10" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Dashboard</a>
+        <a class="analyst-nav-link" href="#monitoring"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11l3 4h4v7H3z"/><path d="M14 7v4h6M7 18.5h.01M17 18.5h.01"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Supply Chain Monitoring</a>
+        <a class="analyst-nav-link" href="#shipments"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11l3 4h4v7H3z"/><path d="M14 7v4h6"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Shipments</a>
+        <a class="analyst-nav-link" href="#inventory"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Inventory</a>
+        <a class="analyst-nav-link" href="#suppliers"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12M8 20v-6h8v6M8 9h.01M12 9h.01M16 9h.01"/></svg>Suppliers</a>
+        <a class="analyst-nav-link" href="#warehouses"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 9 9-6 9 6v11H3z"/><path d="M7 20v-7h10v7M8 8h.01M12 8h.01M16 8h.01"/></svg>Warehouses</a>
+        <a class="analyst-nav-link" href="#alerts"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 17H3z"/><path d="M12 9v4m0 3h.01"/></svg>Disruptions <span class="analyst-nav-count" id="analyst-nav-alert-count">4</span></a>
+        <a class="analyst-nav-link" href="#order-impact"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h5M8 16h3"/><path d="M3 7v14h13"/></svg>Order Impact Analysis</a>
+        <a class="analyst-nav-link" href="#orders"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg>Orders</a>
+        <a class="analyst-nav-link" href="#shipment-risk"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11l3 4h4v7H3z"/><path d="M14 7v4h6"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Risk Analysis</a>
+        <a class="analyst-nav-link" href="#inventory-impact"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Inventory Impact Analysis</a>
+        <a class="analyst-nav-link" href="#products"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Products</a>
+        <a class="analyst-nav-link" href="#customers"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0M16 5.5a3 3 0 0 1 0 5.8M17 14a5 5 0 0 1 3.5 4.8"/></svg>Customers</a>
+        <a class="analyst-nav-link" href="#ai-insights"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>AI Risk Insights</a>
+        <a class="analyst-nav-link" href="#recovery-planning"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M8.5 13l2.2 2.2 4.8-5"/></svg>Recovery Planning</a>
+        <a class="analyst-nav-link" href="#simulation"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h14l-3-3m5 11H6l3 3"/><path d="M18 8v3M6 13v3"/></svg>What-if Simulation</a>
+        <a class="analyst-nav-link" href="#recovery-plans"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 4h12a2 2 0 0 1 2 2v14H4V6a2 2 0 0 1 2-2Z"/><path d="M8 9h8M8 13h8M8 17h5M9 2v4m6-4v4"/></svg>Recovery Plans</a>
+        <a class="analyst-nav-link" href="#recovery-tracking"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2M8 3.8 6.5 5"/></svg>Recovery Tracking</a>
+        <a class="analyst-nav-link" href="#reports"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20V10m5 10V4m5 16v-7m5 7V7"/><path d="M2 20h20"/></svg>Reports &amp; Analytics</a>
+
+        <p class="analyst-nav-label">General</p>
+        <a class="analyst-nav-link" href="#activity"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>My Activity</a>
+        <a class="analyst-nav-link" href="#data-import"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 16V4m-4 4 4-4 4 4"/><path d="M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Data Import</a>
+        <a class="analyst-nav-link" href="#notifications"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>Notifications <span class="analyst-nav-count" id="analyst-nav-notification-count">0</span></a>
+        <a class="analyst-nav-link" href="#settings"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Z"/><path d="m19.4 15 .1.1 1.1.8-1.1 1.9-1.3-.5a7.7 7.7 0 0 1-1.6.9l-.2 1.4h-2.2l-.3-1.4a7.7 7.7 0 0 1-1.6-.9l-1.3.5-1.1-1.9 1.1-.8a7.5 7.5 0 0 1 0-1.8l-1.1-.8 1.1-1.9 1.3.5a7.7 7.7 0 0 1 1.6-.9l.3-1.4h2.2l.2 1.4a7.7 7.7 0 0 1 1.6.9l1.3-.5 1.1 1.9-1.1.8a7.5 7.5 0 0 1-.1 1.8Z" transform="translate(-1 -1) scale(1.05)"/></svg>Settings</a>
+        <a class="analyst-nav-link" href="#help"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.9 1.7c-1 .9-1.7 1.3-1.7 2.8M12 17h.01"/></svg>Help &amp; Support</a>
+      </nav>
+
+      <div class="analyst-sidebar-user">
+        <span class="analyst-avatar">OA</span>
+        <span><strong id="analyst-sidebar-display-name">Operations Analyst</strong><small>Backend workspace</small></span>
+      </div>
+      <a class="analyst-sidebar-exit" href="/">← <span>Exit workspace</span></a>
+    </aside>
+
+    <div class="analyst-content">
+      <header class="analyst-topbar">
+        <span class="analyst-role">Operations Analyst</span>
+        <div class="analyst-toolbar">
+          <label class="analyst-global-search">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+            <input id="analyst-global-search" type="search" placeholder="Search disruptions, shipments, orders..." aria-label="Search supply-chain records">
+          </label>
+          <span class="analyst-current-date" id="analyst-current-date"></span>
+          <span class="analyst-live"><span></span>Live backend data</span>
+          <span class="analyst-avatar analyst-avatar--top" aria-label="Operations Analyst">OA</span>
+        </div>
+      </header>
+
+      <main class="analyst-page">
+        <section class="analyst-welcome" id="overview" data-analyst-page="overview">
+          <div>
+            <p class="analyst-eyebrow">COMMAND CENTER</p>
+            <h1>Welcome, Operations Analyst</h1>
+            <p>Disruption, order, inventory, and recovery signals calculated from backend supply-chain records.</p>
+          </div>
+          <span class="analyst-warehouse-id" id="analyst-warehouse-id"></span>
+        </section>
+
+        <section class="analyst-metrics analyst-recovery-metrics" id="analyst-recovery-kpis" data-analyst-page="overview" aria-label="Supply-chain recovery overview"></section>
+
+        <section class="analyst-overview analyst-surface" id="warehouse" data-analyst-page="overview" aria-label="Warehouse floor navigator">
+          <div class="analyst-section-heading analyst-panel-header">
+            <div><h2>Warehouse floor navigator</h2><p>Current activity at <span id="analyst-warehouse-name"></span></p></div>
+            <span class="analyst-map-tag">2D floor map · illustrative</span>
+          </div>
+          <div class="analyst-floor-layout">
+            <div class="analyst-floor-map" role="img" aria-label="Illustrative two-dimensional warehouse plan showing rack aisles, a forklift, a truck, and loading bays">
+              <div class="analyst-floor-topline"><span>WAREHOUSE FLOOR · GROUND LEVEL</span><span>ZONE A — D</span></div>
+              <div class="analyst-floor-body">
+                <div class="analyst-aisle-labels"><span>A1</span><span>A2</span><span>B1</span><span>B2</span></div>
+                <div class="analyst-rack-grid" aria-hidden="true">
+                  <div class="analyst-rack-row"><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-warning"></i><i class="is-occupied"></i><i class="is-empty"></i><i class="is-occupied"></i></div>
+                  <div class="analyst-rack-row"><i class="is-occupied"></i><i class="is-empty"></i><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-empty"></i></div>
+                  <div class="analyst-rack-row"><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-empty"></i><i class="is-occupied"></i><i class="is-warning"></i><i class="is-occupied"></i></div>
+                  <div class="analyst-rack-row"><i class="is-empty"></i><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-occupied"></i><i class="is-empty"></i><i class="is-occupied"></i></div>
+                </div>
+                <div class="analyst-floor-route" aria-hidden="true"></div>
+                <span class="analyst-floor-vehicle analyst-floor-vehicle--forklift">▣ Forklift</span>
+                <span class="analyst-floor-vehicle analyst-floor-vehicle--truck">▰ Truck</span>
+                <div class="analyst-loading-bays"><span>DOCK 01</span><span>DOCK 02</span><span>DOCK 03</span></div>
+              </div>
+              <div class="analyst-floor-legend"><span><i class="is-occupied"></i>Occupied</span><span><i class="is-empty"></i>Available</span><span><i class="is-warning"></i>Attention</span><span>Illustrative layout · not live equipment tracking</span></div>
+            </div>
+
+            <div class="analyst-utilization">
+              <div class="analyst-overview-card-heading">
+                <div><span class="analyst-overview-label">Storage utilization</span><strong id="analyst-utilization-value">—</strong></div>
+                <span class="analyst-utilization-icon" aria-hidden="true">◉</span>
+              </div>
+              <div class="analyst-progress" role="progressbar" aria-label="Occupied warehouse locations" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="analyst-utilization-bar"></span></div>
+              <p><strong id="analyst-occupied-locations">—</strong> occupied locations out of <span id="analyst-total-locations">—</span></p>
+              <div class="analyst-utilization-divider"></div>
+              <div class="analyst-floor-stat"><span>Pallets in system</span><strong id="analyst-pallet-count">—</strong></div>
+              <div class="analyst-floor-stat"><span>Shipments in transit</span><strong id="analyst-active-shipment-count">—</strong></div>
+              <div class="analyst-floor-stat"><span>Delayed shipments</span><strong id="analyst-delayed-shipment-count">—</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="analyst-overview-insights" data-analyst-page="overview">
+          <article class="analyst-surface analyst-chart-card">
+            <div class="analyst-panel-header"><div><h2>Operational signals</h2><p><span id="overview-period-label">This week</span> · click a data point to inspect related records</p></div><label class="analyst-compact-filter">Period <select id="overview-date-range" aria-label="Overview chart date range"><option value="day">Today</option><option value="week" selected>This week</option><option value="month">This month</option><option value="custom">Custom</option></select></label></div>
+            <div class="analyst-custom-date-range" id="overview-custom-range" hidden><label>From <input type="date" id="overview-date-from"></label><label>To <input type="date" id="overview-date-to"></label><button class="analyst-button" id="overview-apply-range" type="button">Apply</button></div>
+            <div class="analyst-mini-charts">
+              <div><h3>Inventory distribution</h3><div id="overview-inventory-chart" class="analyst-chart-bars"></div></div>
+              <div><h3>Shipment performance</h3><div id="overview-shipment-chart" class="analyst-chart-bars"></div></div>
+            </div>
+          </article>
+          <article class="analyst-surface analyst-attention-card">
+            <div class="analyst-panel-header"><div><h2>Operational attention</h2><p>Priority issues requiring follow-up</p></div><a href="#alerts" class="analyst-text-link">View incidents</a></div>
+            <div id="analyst-attention-list" class="analyst-attention-list"></div>
+          </article>
+        </section>
+
+        <section class="analyst-detail-section" id="analyst-detail-section" aria-label="Selected record details" hidden>
+          <aside id="analyst-object-panel" class="analyst-detail-panel analyst-surface" aria-live="polite">
+            <div class="analyst-detail-heading">
+              <div><p class="analyst-panel-eyebrow">RECORD DETAILS</p><h2 id="analyst-object-title">Selected record</h2><p id="analyst-object-type">Record</p></div>
+              <button id="analyst-panel-close" type="button" aria-label="Close details">×</button>
+            </div>
+            <p id="analyst-object-note" class="analyst-object-note" aria-live="polite"></p>
+            <div class="analyst-panel-actions"><button id="analyst-object-action" class="analyst-panel-action" type="button" hidden>Record action</button></div>
+            <dl>
+              <div><dt>Record ID</dt><dd id="analyst-object-id">—</dd></div>
+              <div><dt>Related item</dt><dd id="analyst-object-product">—</dd></div>
+              <div><dt>Reference</dt><dd id="analyst-object-product-id">—</dd></div>
+              <div><dt>Quantity / ETA</dt><dd id="analyst-object-quantity">—</dd></div>
+              <div><dt>Status</dt><dd id="analyst-object-status">—</dd></div>
+              <div><dt>Location</dt><dd id="analyst-object-location">—</dd></div>
+            </dl>
+            <div id="analyst-detail-extra" class="analyst-detail-extra"></div>
+          </aside>
+        </section>
+
+        <section class="analyst-module" id="inventory" data-analyst-page="inventory" aria-label="Inventory management">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">MAIN WORKSPACE</p><h2>Inventory Management</h2><p>Product availability, stock levels, shortages, and movements.</p></div><button class="analyst-button" id="inventory-export" type="button">Export CSV</button></div>
+          <div class="analyst-module-kpis" id="inventory-kpis"></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Products &amp; stock</h2><p id="inventory-result-count">All warehouse products</p></div><button class="analyst-button analyst-button--quiet" id="inventory-clear-filters" type="button">Clear filters</button></div>
+            <div class="analyst-table-filters">
+              <label>Search<input id="inventory-search" type="search" placeholder="Product, ID, or SKU"></label>
+              <label>Status<select id="inventory-status-filter"><option value="all">All statuses</option><option value="in-stock">In stock</option><option value="low-stock">Low stock</option><option value="out-of-stock">Out of stock</option></select></label>
+              <label>Category<select id="inventory-category-filter"><option value="all">All categories</option></select></label>
+              <label>Warehouse<select id="inventory-warehouse-filter"><option value="all">All warehouses</option><option value="WH-001">WH-001</option></select></label>
+              <label>Sort by<select id="inventory-sort"><option value="name">Product name</option><option value="quantity-asc">Quantity: low to high</option><option value="quantity-desc">Quantity: high to low</option><option value="updated-desc">Last updated: newest</option><option value="updated-asc">Last updated: oldest</option></select></label>
+            </div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Product</th><th>SKU / Category</th><th>Quantity</th><th>Reserved</th><th>Available</th><th>Warehouse / Location</th><th>Status</th><th>Last updated</th><th>Actions</th></tr></thead><tbody id="inventory-table-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="products" data-analyst-page="products" aria-label="Product directory">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">PRODUCT CATALOG</p><h2>Products</h2><p>Browse product and stock details from the same shared inventory records. This page is read-only.</p></div></div>
+          <div class="analyst-info-banner">Product quantities and stock status come from the existing inventory records. This directory does not create products or change physical stock.</div>
+          <div class="analyst-table-filters">
+            <label>Search<input id="product-directory-search" type="search" placeholder="Product, ID, SKU, or supplier"></label>
+            <label>Status<select id="product-directory-status"><option value="all">All stock statuses</option><option value="in-stock">In stock</option><option value="low-stock">Low stock</option><option value="out-of-stock">Out of stock</option></select></label>
+          </div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Product records</h2><p id="product-directory-count">Products from the shared inventory dataset</p></div></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Product / SKU</th><th>Category</th><th>Supplier</th><th>On hand</th><th>Reserved</th><th>Available</th><th>Warehouse</th><th>Status</th><th>Details</th></tr></thead><tbody id="product-directory-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="customers" data-analyst-page="customers" aria-label="Customer directory">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">CUSTOMER DIRECTORY</p><h2>Customers</h2><p>Review customer records loaded from the backend customer master. Import a CSV to add or update customer directory records.</p></div><button class="analyst-button" id="customer-export" type="button">Export CSV</button></div>
+          <div class="analyst-module-kpis" id="customer-kpis"></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Customer accounts</h2><p id="customer-result-count">No customer master records imported</p></div><a class="analyst-text-link" href="#data-import">Import customer data →</a></div>
+            <div class="analyst-table-filters">
+              <label>Search<input id="customer-search" type="search" placeholder="Customer, ID, email, or region"></label>
+              <label>Status<select id="customer-status-filter"><option value="all">All statuses</option><option value="active">Active</option><option value="inactive">Inactive</option></select></label>
+              <label>Region<select id="customer-region-filter"><option value="all">All regions</option></select></label>
+            </div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Customer / ID</th><th>Region</th><th>Email / phone</th><th>Linked orders</th><th>Status</th></tr></thead><tbody id="customer-table-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="shipments" data-analyst-page="shipments" aria-label="Shipment management">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">MAIN WORKSPACE</p><h2>Shipment Management</h2><p>Monitor movement, delivery performance, and transportation exceptions.</p></div><button class="analyst-button" id="shipment-export" type="button">Export CSV</button></div>
+          <div class="analyst-module-kpis" id="shipment-kpis"></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Shipment tracking</h2><p>Open any shipment for its timeline, order, products, and related incidents.</p></div></div>
+            <div class="analyst-table-filters">
+              <label>Search<input id="shipment-search" type="search" placeholder="Shipment, order, destination, carrier"></label>
+              <label>Status<select id="shipment-status-filter"><option value="all">All statuses</option><option value="pending-dispatch">Pending dispatch</option><option value="in-transit">In transit</option><option value="delayed">Delayed</option><option value="delivered">Delivered</option><option value="failed">Failed</option></select></label>
+            </div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Shipment / Order</th><th>Origin → destination</th><th>Carrier / Vehicle</th><th>Dispatch</th><th>Expected delivery</th><th>Status</th><th>Delay / exception</th><th>Actions</th></tr></thead><tbody id="shipment-table-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="suppliers" data-analyst-page="suppliers" aria-label="Supplier directory">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">SUPPLIER NETWORK</p><h2>Suppliers</h2><p>Review suppliers represented in the shared product inventory and identify related stock exposure.</p></div></div>
+          <div class="analyst-info-banner">Supplier metrics are derived from backend product and supplier records. Contract, lead-time, and service-level fields are shown only when the backend supplies them.</div>
+          <div class="analyst-table-filters"><label>Search<input id="supplier-search" type="search" placeholder="Supplier or product"></label></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Supplier records</h2><p id="supplier-result-count">Suppliers derived from shared product data</p></div></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Supplier</th><th>Products</th><th>Available stock by unit</th><th>Products below reorder threshold</th><th>Products</th></tr></thead><tbody id="supplier-table-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="warehouses" data-analyst-page="warehouses" aria-label="Warehouse directory">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">WAREHOUSE NETWORK</p><h2>Warehouses</h2><p>Review warehouse locations and the inventory records assigned to each location.</p></div></div>
+          <div class="analyst-info-banner">Only warehouses present in the supplied dataset are shown. Capacity statistics are available only for the illustrative Central Distribution Warehouse.</div>
+          <div class="analyst-table-filters"><label>Search<input id="warehouse-directory-search" type="search" placeholder="Warehouse or location"></label></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Warehouse records</h2><p id="warehouse-directory-count">Locations derived from inventory records</p></div></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Warehouse</th><th>Products</th><th>Available stock by unit</th><th>Capacity / occupancy</th><th>Locations</th></tr></thead><tbody id="warehouse-directory-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="alerts" data-analyst-page="alerts" aria-label="Alerts and incident management">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">MAIN WORKSPACE</p><h2>Disruption Management</h2><p>Investigate disruptions, review affected records, and record analyst actions.</p></div><span class="analyst-report-tag" id="incident-workflow-summary">Alert → Acknowledge → Investigate → Resolve</span></div>
+          <div class="analyst-table-filters analyst-alert-filters">
+            <label>Search<input id="alert-search" type="search" placeholder="Alert, incident, product, or shipment"></label>
+            <label>Severity<select id="alert-severity-filter"><option value="all">All severities</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+            <label>Status<select id="alert-status-filter"><option value="all">All statuses</option><option value="open">Open</option><option value="acknowledged">Acknowledged</option><option value="investigating">Investigating</option><option value="resolved">Resolved</option></select></label>
+            <label>Sort<select id="alert-sort"><option value="severity">Severity: highest first</option><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select></label>
+          </div>
+          <div id="alert-list" class="analyst-incident-list" aria-live="polite"></div>
+        </section>
+
+        <section class="analyst-module" id="monitoring" data-analyst-page="monitoring" aria-label="Supply chain monitoring">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">NETWORK VISIBILITY</p><h2>Supply Chain Monitoring</h2><p>Shared shipment, supplier, warehouse, and inventory records. Read-only operational monitoring.</p></div></div>
+          <div class="analyst-module-kpis" id="monitoring-kpis"></div>
+          <div class="analyst-intelligence-grid">
+            <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Disruption watch</h2><p>Consolidated severity, affected records, suppliers, warehouses, and risk status from shared data.</p></div><label>Search<input id="monitoring-disruption-search" type="search" placeholder="Disruption, supplier, shipment, order"></label></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Disruption</th><th>Category / severity</th><th>Risk</th><th>Orders / shipments</th><th>Suppliers / warehouses</th><th>Status</th><th></th></tr></thead><tbody id="monitoring-disruptions"></tbody></table></div></article>
+            <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Shipment watch</h2><p>Delays and in-flight orders from shared shipment records.</p></div><a href="#shipments" class="analyst-text-link">Open shipment register →</a></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Shipment / order</th><th>Carrier / route</th><th>Expected / delay</th><th>Status</th></tr></thead><tbody id="monitoring-shipments"></tbody></table></div></article>
+            <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Supplier exposure</h2><p>Supplier names and stock exposure from product records.</p></div></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Supplier</th><th>Products</th><th>Available units</th><th>Below threshold</th></tr></thead><tbody id="monitoring-suppliers"></tbody></table></div></article>
+            <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Warehouse visibility</h2><p>Only warehouse locations present in the supplied dataset are shown.</p></div></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Warehouse</th><th>Products</th><th>Available units</th><th>Shortages</th></tr></thead><tbody id="monitoring-warehouses"></tbody></table></div></article>
+            <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Inventory signals</h2><p>Availability, reservations, and linked shipment demand.</p></div><a href="#inventory" class="analyst-text-link">Open product register →</a></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Product / SKU</th><th>Warehouse</th><th>Available / required</th><th>Shortage</th></tr></thead><tbody id="monitoring-inventory"></tbody></table></div></article>
+          </div>
+        </section>
+
+        <section class="analyst-module" id="order-impact" data-analyst-page="order-impact" aria-label="Order impact analysis">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">CUSTOMER AND DELIVERY EXPOSURE</p><h2>Order Impact Analysis</h2><p>Order impacts are derived from affected shipments; delivery impact is an estimate based on recorded dates and priority.</p></div></div>
+          <div class="analyst-module-kpis" id="order-impact-kpis"></div>
+          <article class="analyst-surface analyst-table-card analyst-impact-graph-card">
+            <div class="analyst-panel-header">
+              <div><h2>Delay propagation graph</h2><p>Backend impact chain for the selected shipment: supplier → shipment → warehouse → inventory → product → order → customer.</p></div>
+              <label class="analyst-compact-filter">Shipment<select id="impact-graph-shipment"></select></label>
+            </div>
+            <div id="impact-graph-container" class="impact-graph-container" aria-live="polite"></div>
+          </article>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-table-filters"><label>Search<input id="order-impact-search" type="search" placeholder="Order, shipment, destination"></label><label>Risk level<select id="order-impact-risk"><option value="all">All risk levels</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Order / shipment</th><th>Priority / risk</th><th>Destination / carrier</th><th>Delivery deadline</th><th>Expected delay</th><th>Linked stock / business impact</th></tr></thead><tbody id="order-impact-table"></tbody></table></div><p class="analyst-module-note">The backend does not supply customer contract values or a separate order ledger. Order impact reflects shipment records; business impact is a qualitative estimate, not a financial loss calculation.</p></article>
+        </section>
+
+        <section class="analyst-module" id="orders" data-analyst-page="orders" aria-label="Shipment-linked order register">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">ORDER REGISTER</p><h2>Orders</h2><p>Review order IDs represented by the existing shipment feed and open their linked shipment records.</p></div></div>
+          <div class="analyst-info-banner">The backend does not expose a separate order ledger. These order rows are derived from shipment records; customer contract values and full line-item data are not available.</div>
+          <div class="analyst-table-filters"><label>Search<input id="order-directory-search" type="search" placeholder="Order ID, destination, or shipment"></label><label>Shipment status<select id="order-directory-status"><option value="all">All statuses</option><option value="delayed">Delayed</option><option value="pending-dispatch">Pending dispatch</option><option value="in-transit">In transit</option><option value="delivered">Delivered</option><option value="failed">Failed</option></select></label></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Orders from shipment records</h2><p id="order-directory-count">Order IDs grouped from shared shipments</p></div></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Order</th><th>Destination</th><th>Shipments</th><th>Priority</th><th>Expected delivery</th><th>Shipment status</th></tr></thead><tbody id="order-directory-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="shipment-risk" data-analyst-page="shipment-risk" aria-label="Shipment risk assessment">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">RISK ASSESSMENT</p><h2>Shipment Risk Assessment</h2><p>Backend rule-based scores use recorded status, priority, overdue days, stock, and linked alerts.</p></div></div>
+          <div class="analyst-info-banner">Scores come from the backend risk engine, with AI explanations when the AI service is reachable. The backend does not expose historical risk-assessment records.</div>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-table-filters"><label>Search<input id="shipment-risk-search" type="search" placeholder="Shipment, order, destination"></label><label>Risk level<select id="shipment-risk-level"><option value="all">All risk levels</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Shipment / order</th><th>Risk score / level</th><th>Contributing factors</th><th>Assessment record</th><th></th></tr></thead><tbody id="shipment-risk-table"></tbody></table></div></article>
+        </section>
+
+        <section class="analyst-module" id="inventory-impact" data-analyst-page="inventory-impact" aria-label="Inventory impact analysis">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">STOCK EXPOSURE</p><h2>Inventory Impact Analysis</h2><p>Compare available and reserved units with quantities on open linked shipments.</p></div></div>
+          <div class="analyst-info-banner">Alternative warehouse availability is shown only when another warehouse for the same SKU exists in the backend data. This workspace applies a shipment's quantity to each linked SKU because the backend does not supply item-level quantity splits; verify the split before operational use.</div>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-table-filters"><label>Search<input id="inventory-impact-search" type="search" placeholder="Product, SKU, supplier"></label><label>Stock impact<select id="inventory-impact-filter"><option value="all">All products</option><option value="shortage">Shortage against open demand</option><option value="below-threshold">Below reorder threshold</option></select></label></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Product / SKU</th><th>On hand</th><th>Reserved</th><th>Available</th><th>Required by open shipments</th><th>Shortage</th><th>Other warehouse available</th><th>Supplier</th></tr></thead><tbody id="inventory-impact-table"></tbody></table></div></article>
+        </section>
+
+        <section class="analyst-module" id="ai-insights" data-analyst-page="ai-insights" aria-label="Risk explanations and recommendations">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">EVIDENCE-BASED GUIDANCE</p><h2>AI Risk Insights</h2><p>Risk factors are computed by the backend risk engine. Natural-language explanations come from the AI service when it is reachable, with deterministic backend fallback otherwise.</p></div></div>
+          <div class="analyst-info-banner">Explanations are grounded in recorded shipment and inventory fields. When the AI service is offline, backend rule-based explanations are labeled as fallback; unknown supplier lead times, alternate stock, or commercial impacts are never assumed.</div>
+          <div id="analyst-ai-insights-list" class="analyst-attention-list"></div>
+        </section>
+
+        <section class="analyst-module" id="recovery-planning" data-analyst-page="recovery-planning" aria-label="Recovery planning">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">PLAN SUBMISSION</p><h2>Recovery Planning</h2><p>Create or revise a plan for manager review. Submission does not approve or execute the plan.</p></div></div>
+          <div class="analyst-info-banner">Estimates are scenario inputs submitted to the backend. Alternative-supplier, additional-procurement-expenditure, and warehouse-transfer plans require separate approvals. Analyst role cannot approve or execute plans.</div>
+          <article class="analyst-surface analyst-guided-plan">
+            <form id="recovery-plan-form">
+              <label>Disruption<select id="recovery-disruption" name="disruptionId" required></select></label>
+              <label>Recovery strategy<select id="recovery-strategy" name="strategy" required><option value="Expedite or reroute shipment">Expedite or reroute shipment</option><option value="Reallocate inventory between warehouses">Reallocate inventory between warehouses</option><option value="Request alternative supplier replenishment">Request alternative supplier replenishment</option></select></label>
+              <label>Required actions<textarea name="requiredActions" rows="3" maxlength="800" required placeholder="List the actions the executing team should take"></textarea></label>
+              <label>Resources and responsible teams<textarea name="resources" rows="2" maxlength="500" required placeholder="List known resources and proposed responsible team"></textarea></label>
+              <div class="analyst-plan-input-row"><label>Estimated cost (INR)<input name="cost" type="number" min="1" step="1" required></label><label>Expected recovery time (days)<input name="recoveryDays" type="number" min="1" step="1" required></label><label>Simulated risk reduction (%)<input name="riskReduction" type="number" min="0" max="100" step="1" required></label></div>
+              <label class="analyst-form-checkbox"><input name="requiresAdditionalExpenditure" type="checkbox"> Additional procurement expenditure needs approval</label>
+              <p class="analyst-form-hint" id="recovery-plan-context">Select a disruption to review its affected records and simulated alternatives.</p>
+              <button class="analyst-button" type="submit">Submit recovery plan for approval</button>
+              <p class="analyst-settings-status" id="recovery-plan-status" aria-live="polite"></p>
+            </form>
+          </article>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-panel-header"><div><h2>Submitted recovery plans</h2><p>Shared plan records, approval states, and execution states.</p></div></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Plan / disruption</th><th>Strategy</th><th>Approval</th><th>Execution</th><th>Simulation estimate</th><th>Actual outcome</th><th></th></tr></thead><tbody id="analyst-plan-table"></tbody></table></div></article>
+        </section>
+
+        <section class="analyst-module" id="recovery-plans" data-analyst-page="recovery-plans" aria-label="Recovery plan register">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">SHARED PLAN REGISTER</p><h2>Recovery Plans</h2><p>Search and review the recovery plans you created, with approval and execution status from the shared workflow.</p></div></div>
+          <div class="analyst-info-banner">Plans and status changes are shared with the Supply Chain Manager. This register is read-only; create or revise plans in Recovery Planning.</div>
+          <div class="analyst-table-filters">
+            <label>Search<input id="recovery-plans-search" type="search" placeholder="Plan, disruption, or strategy"></label>
+            <label>Approval status<select id="recovery-plans-approval"><option value="all">All approval statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="modification_requested">Modification requested</option></select></label>
+            <label>Execution status<select id="recovery-plans-execution"><option value="all">All execution statuses</option><option value="not_started">Not started</option><option value="pending">Pending</option><option value="in_progress">In progress</option><option value="blocked">Blocked</option><option value="successful">Successful</option><option value="failed">Failed</option></select></label>
+          </div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-panel-header"><div><h2>Recovery plan records</h2><p id="recovery-plans-result-count">All plans created by this analyst</p></div><button class="analyst-button analyst-button--quiet" id="recovery-plans-clear" type="button">Clear filters</button></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Plan / disruption</th><th>Strategy</th><th>Approval</th><th>Execution</th><th>Simulation estimate</th><th>Actual result</th><th>Details</th></tr></thead><tbody id="recovery-plans-table-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="simulation" data-analyst-page="simulation" aria-label="What-if simulation">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">SCENARIO COMPARISON</p><h2>What-if Simulation</h2><p>Compare explicit illustrative assumptions against shipment, stock, and alert data. Scenarios are not actual results.</p></div></div>
+          <div class="analyst-info-banner">Estimated costs use visible scenario assumptions, not supplier/carrier quotes. Expected risk reduction is a scenario assumption, not a measured outcome. Saving a scenario stores it separately and does not create a recovery plan.</div>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-table-filters"><label>Disruption<select id="simulation-disruption"></select></label><button class="analyst-button" id="simulation-run" type="button">Compare recovery strategies</button></div><div id="simulation-results" class="analyst-simulation-grid"></div><div class="analyst-panel-header"><div><h2>Saved simulation scenarios</h2><p>Local comparison notes; these are not shared recovery plans.</p></div></div><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Saved</th><th>Disruption</th><th>Strategy</th><th>Estimated cost</th><th>Recovery time</th><th>Risk reduction</th></tr></thead><tbody id="simulation-saved-table"></tbody></table></div></article>
+        </section>
+
+        <section class="analyst-module" id="recovery-tracking" data-analyst-page="recovery-tracking" aria-label="Recovery tracking">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">APPROVED PLAN FOLLOW-UP</p><h2>Recovery Tracking</h2><p>Track shared approved recovery plans and execution-user updates. This page is read-only for Analysts.</p></div></div>
+          <div class="analyst-info-banner">Do not perform or mark work complete here. Tasks and outcomes are recorded by assigned executing users; manager approval and authorization remain separate.</div>
+          <div id="analyst-recovery-tracking-list" class="analyst-attention-list"></div>
+        </section>
+
+        <section class="analyst-module" id="reports" data-analyst-page="reports" aria-label="Reports and analytics">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">ANALYTICS</p><h2>Reports &amp; Analytics</h2><p>Explore supply-chain performance, disruptions, order risk, inventory impact, and shared recovery plans.</p></div><div class="analyst-report-actions"><button class="analyst-button analyst-button--quiet" id="report-print" type="button">Print / Save PDF</button><button class="analyst-button" id="report-export" type="button">Export CSV</button></div></div>
+          <article class="analyst-surface analyst-table-card">
+            <div class="analyst-table-filters analyst-report-filters">
+              <label>Report<select id="report-type"><option value="overview">Operational performance</option><option value="inventory">Inventory performance</option><option value="warehouse">Warehouse performance</option><option value="shipments">Shipment performance</option><option value="alerts">Disruption performance</option><option value="orders">Order risk analysis</option><option value="inventory-impact">Inventory impact</option><option value="recovery">Recovery plan performance</option></select></label>
+              <label>Period<select id="report-period"><option value="day">Daily</option><option value="week" selected>Weekly</option><option value="month">Monthly</option><option value="custom">Custom range</option></select></label>
+              <label>Warehouse<select id="report-warehouse"><option value="all">All warehouses</option><option value="WH-001">WH-001</option></select></label>
+              <label>Category<select id="report-category"><option value="all">All categories</option></select></label>
+              <div class="analyst-date-pair" id="report-custom-range" hidden><label>From<input type="date" id="report-date-from"></label><label>To<input type="date" id="report-date-to"></label></div>
+            </div>
+            <div class="analyst-report-summary" id="report-summary"></div>
+            <p class="analyst-period-comparison" id="report-period-comparison"></p>
+            <div class="analyst-report-charts">
+              <article><h3 id="report-chart-one-title">Inventory distribution</h3><div id="report-chart-one" class="analyst-chart-bars"></div></article>
+              <article><h3 id="report-chart-two-title">Warehouse utilisation</h3><div id="report-chart-two" class="analyst-chart-bars"></div></article>
+              <article><h3 id="report-chart-three-title">Shipment performance</h3><div id="report-chart-three" class="analyst-chart-bars"></div></article>
+              <article><h3 id="report-chart-four-title">Inventory trends</h3><div id="report-chart-four" class="analyst-chart-bars"></div></article>
+              <article><h3 id="report-chart-five-title">Alert distribution</h3><div id="report-chart-five" class="analyst-chart-bars"></div></article>
+            </div>
+            <div class="analyst-panel-header analyst-report-table-heading"><div><h2 id="report-table-title">Operational records</h2><p>Click a row to open its associated record.</p></div></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Date</th><th>Record</th><th>Category</th><th>Status</th><th>Value</th></tr></thead><tbody id="report-table-body"></tbody></table></div>
+            <p class="analyst-report-footnote">Analytics use backend records and recorded recovery activity. Inventory turnover is an estimated unit-based ratio; use Print and choose Save as PDF to export a PDF.</p>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="data-import" data-analyst-page="data-import" aria-label="Customer data import">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">DATA MANAGEMENT</p><h2>Data Import</h2><p>Import customer master records from a CSV file. Imported rows are merged by customer ID; shipment, inventory, and recovery records are not changed.</p></div></div>
+          <div class="analyst-info-banner">Customer records are stored by the backend. Importing a customer CSV adds or updates only customer directory records through the import API. Review the preview and validation messages before applying changes.</div>
+          <article class="analyst-surface analyst-guided-plan analyst-import-card">
+            <div class="analyst-panel-header"><div><h2>Import customer CSV</h2><p>Required columns: <code>customerId</code>, <code>name</code>. Optional: <code>email</code>, <code>phone</code>, <code>region</code>, <code>status</code>, <code>orderIds</code>.</p></div><button class="analyst-button analyst-button--quiet" id="customer-template-download" type="button">Download CSV template</button></div>
+            <label class="analyst-import-file">Choose CSV file<input id="customer-import-file" type="file" accept=".csv,text/csv"></label>
+            <p class="analyst-form-hint">Use active or inactive for status. Separate order IDs with semicolons. Existing customer IDs are updated; new IDs are added. Invalid rows are skipped and shown below.</p>
+            <p class="analyst-settings-status" id="customer-import-status" aria-live="polite"></p>
+            <div id="customer-import-errors" class="analyst-import-errors" aria-live="polite"></div>
+            <div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Customer ID</th><th>Name</th><th>Email</th><th>Region</th><th>Order references</th><th>Status</th></tr></thead><tbody id="customer-import-preview"><tr><td colspan="6" class="analyst-table-empty">Choose a CSV file to validate and preview customer records.</td></tr></tbody></table></div>
+            <div class="analyst-row-actions"><button class="analyst-button" id="customer-import-apply" type="button" disabled>Import valid customer rows</button></div>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="activity" data-analyst-page="activity" aria-label="Activity log">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">GENERAL</p><h2>Activity Log</h2><p>Recent inventory, shipment, alert, and user actions.</p></div></div>
+          <article class="analyst-surface analyst-table-card"><div class="analyst-table-wrap"><table class="analyst-data-table"><thead><tr><th>Date &amp; time</th><th>Activity</th><th>Description</th><th>Related record</th></tr></thead><tbody id="activity-table-body"></tbody></table></div></article>
+        </section>
+
+        <section class="analyst-module" id="notifications" data-analyst-page="notifications" aria-label="Notifications">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">GENERAL</p><h2>Notifications</h2><p>Updates linked to the operational records that need your attention.</p></div><button class="analyst-button analyst-button--quiet" id="notifications-read-all" type="button">Mark all read</button></div>
+          <div id="notification-list" class="analyst-notification-list"></div>
+        </section>
+
+        <section class="analyst-module" id="settings" data-analyst-page="settings" aria-label="Workspace settings">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">GENERAL</p><h2>Settings</h2><p>Personal workspace preferences for this browser.</p></div></div>
+          <article class="analyst-surface analyst-settings-card">
+            <label>Display name<input id="settings-display-name" type="text" value="Operations Analyst"></label>
+            <label>Default warehouse<select id="settings-default-warehouse"><option value="WH-001">WH-001 · Central Distribution Warehouse</option></select></label>
+            <label class="analyst-checkbox-setting"><input id="settings-notifications-enabled" type="checkbox" checked>Show operational notifications</label>
+            <button class="analyst-button" id="settings-save" type="button">Save preferences</button>
+            <p id="settings-save-status" class="analyst-settings-status" aria-live="polite"></p>
+          </article>
+        </section>
+
+        <section class="analyst-module" id="help" data-analyst-page="help" aria-label="Help and support">
+          <div class="analyst-module-heading"><div><p class="analyst-eyebrow">GENERAL</p><h2>Help &amp; Support</h2><p>Workspace guidance.</p></div></div>
+          <article class="analyst-surface analyst-settings-card"><h3>About this workspace</h3><p>DisruptionIQ Operations Analyst uses the authenticated Spring Boot backend for shipments, inventory, risk assessments, impact analysis, simulations, recovery plans, notifications, and audit activity. Display preferences and saved simulation notes stay in this browser; the workspace does not connect to a live warehouse, carrier, or ERP system.</p></article>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Operations Analyst workspace logic -->
+  <script
+    type="module"
+    src="/src/operations-analyst-page.js"
+  ></script>
+</body>
+</html>

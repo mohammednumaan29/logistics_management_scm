@@ -1,0 +1,327 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #191919;
+  background: #f7f7f6;
+  --dashboard-accent: #f3c51d;
+  --dashboard-accent-soft: #fff7d7;
+  --dashboard-ink: #191919;
+  --dashboard-muted: #777a80;
+  --dashboard-border: #e7e7e7;
+  --dashboard-surface: #fff;
+  --dashboard-background: #f7f7f6;
+  --dashboard-shadow: 0 5px 18px rgba(27, 27, 25, .04);
+}
+
+:is(.analyst-app-shell, .im-shell, .lm-shell, .manager-shell, .wo-shell, .proc-shell, .admin-shell) {
+  color: var(--dashboard-ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+:is(.analyst-app-shell, .im-shell, .lm-shell, .manager-shell, .wo-shell, .proc-shell, .admin-shell) * {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+:is(.analyst-app-shell, .im-shell, .lm-shell, .manager-shell, .wo-shell, .proc-shell, .admin-shell) :is(small, label, th, td, p, a, button, input, select, textarea, li, dt, dd) {
+  font-size: max(10px, .85em) !important;
+}
+
+:is(.analyst-app-shell, .im-shell, .lm-shell, .manager-shell, .wo-shell, .proc-shell, .admin-shell) :where(span, time, em):not(
+  .analyst-nav-link > span:first-child,
+  .analyst-metric-icon,
+  .im-nav > a > span,
+  .im-kpi-icon,
+  .lm-nav > a > span,
+  .lm-kpi-icon,
+  .manager-nav a > span:first-child,
+  .manager-kpi-icon,
+  .wo-kpi-icon,
+  .proc-icon,
+  .proc-kpi-icon,
+  .admin-icon,
+  .admin-kpi-icon
+) {
+  font-size: max(10px, .85em) !important;
+}
+
+body:has(.analyst-app-shell),
+body:has(.im-shell),
+body:has(.lm-shell),
+body:has(.manager-shell),
+body:has(.wo-shell),
+body:has(.proc-shell),
+body:has(.admin-shell) {
+  background: var(--dashboard-background);
+  color: var(--dashboard-ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:is(.analyst-sidebar, .im-sidebar, .lm-sidebar, .manager-sidebar, .wo-sidebar, .proc-sidebar, .admin-sidebar) {
+  width: 242px;
+  background: #191919;
+}
+
+:is(.analyst-content, .im-content, .lm-content, .manager-content, .wo-content, .proc-content, .admin-content) {
+  margin-left: 242px;
+}
+
+:is(.analyst-brand, .im-brand, .lm-brand, .manager-brand, .wo-brand, .proc-brand, .admin-brand) {
+  min-height: 62px;
+  border-bottom-color: #303030;
+  color: #f7f7f7;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+:is(.analyst-brand-mark, .im-brand-mark, .lm-brand-mark, .manager-brand-mark, .wo-brand-mark, .proc-brand-mark, .admin-brand-mark) {
+  width: 29px;
+  height: 29px;
+  border-radius: 9px;
+  background: var(--dashboard-accent);
+  color: #191919;
+}
+
+:is(.analyst-brand, .im-brand, .lm-brand, .manager-brand, .wo-brand, .proc-brand, .admin-brand) > span:last-child > span {
+  color: var(--dashboard-accent);
+}
+
+:is(.analyst-nav-label, .im-nav > p, .lm-nav > p, .manager-nav-label, .wo-nav-label, .proc-nav-label, .admin-nav-label) {
+  color: #a4a49f;
+  font-size: 10px;
+  letter-spacing: 1.05px;
+}
+
+:is(.analyst-nav-link, .im-nav > a, .lm-nav > a, .manager-nav a, .wo-nav a, .proc-nav a, .admin-nav > a, .admin-nav-group > summary) {
+  min-height: 39px !important;
+  gap: 10px;
+  padding-inline: 9px;
+  border-radius: 8px;
+  color: #dedede;
+  font-size: 12px !important;
+}
+
+:is(.analyst-nav-link:hover, .analyst-nav-link.is-active,
+    .im-nav > a:hover, .im-nav > a.is-active,
+    .lm-nav > a:hover, .lm-nav > a.is-active,
+    .manager-nav a:hover, .manager-nav a.is-active,
+    .wo-nav a:hover, .wo-nav a.is-active,
+    .proc-nav a:hover, .proc-nav a.is-active,
+    .admin-nav > a:hover, .admin-nav > a.is-active,
+    .admin-nav-group > summary:hover, .admin-nav-group[open] > summary) {
+  background: #303030;
+  color: var(--dashboard-accent);
+}
+
+:is(.analyst-nav-link > span:first-child, .analyst-nav-link > svg,
+    .im-nav > a > span, .lm-nav > a > span, .manager-nav a > span:first-child,
+    .manager-nav a > svg, .wo-nav a > svg, .proc-icon, .admin-icon) {
+  display: inline-grid;
+  width: 18px !important;
+  height: 18px !important;
+  flex: 0 0 18px !important;
+  place-items: center;
+  color: #c9c9c9;
+  font-size: 16px !important;
+  line-height: 1;
+}
+
+:is(.analyst-nav-link > svg, .wo-nav a > svg) {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+:is(.analyst-nav-link > svg, .manager-nav a > svg, .wo-nav a > svg) {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+:is(.analyst-nav-link:hover > span:first-child, .analyst-nav-link.is-active > span:first-child,
+    .analyst-nav-link:hover > svg, .analyst-nav-link.is-active > svg,
+    .im-nav > a:hover > span, .im-nav > a.is-active > span,
+    .lm-nav > a:hover > span, .lm-nav > a.is-active > span,
+    .manager-nav a:hover > span:first-child, .manager-nav a.is-active > span:first-child,
+    .wo-nav a:hover > svg, .wo-nav a.is-active > svg) {
+  color: var(--dashboard-accent);
+}
+
+:is(.analyst-topbar, .im-topbar, .lm-topbar, .manager-topbar, .wo-topbar, .proc-topbar, .admin-topbar) {
+  min-height: 60px;
+  padding-inline: 25px;
+  border-bottom: 1px solid #e8e8e6;
+  background: rgba(255,255,255,.97);
+  box-shadow: none;
+}
+
+:is(.analyst-content, .im-content, .lm-content, .manager-content, .wo-content, .proc-content, .admin-content) {
+  background: var(--dashboard-background);
+}
+
+:is(.analyst-page, .im-page, .lm-page, .manager-page, .wo-page, .proc-main, .admin-main) {
+  max-width: 1600px;
+  padding: 23px 25px 38px;
+}
+
+:is(.analyst-welcome h1, .im-page-heading h1, .lm-page-heading h1, .manager-heading h1, .wo-welcome h1, .wo-heading h1, .proc-heading h1, .admin-page-heading h1) {
+  color: #191919;
+  font-size: clamp(25px, 2.2vw, 30px);
+  font-weight: 750;
+  letter-spacing: -.8px;
+}
+
+:is(.analyst-eyebrow, .im-eyebrow, .lm-eyebrow, .manager-eyebrow, .wo-eyebrow, .proc-eyebrow, .admin-eyebrow) {
+  color: #806600;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.15px;
+}
+
+:is(.analyst-welcome p:last-child, .im-page-heading p:not(.im-eyebrow), .lm-page-heading p:not(.lm-eyebrow), .manager-heading p:last-child, .wo-welcome p:last-child, .wo-heading p:last-child, .proc-heading p:last-child, .admin-page-heading p:last-child) {
+  color: var(--dashboard-muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+:is(.analyst-metric, .im-kpi, .lm-kpi, .manager-kpi, .wo-kpi, .proc-kpi, .admin-kpi) {
+  min-height: 94px !important;
+  padding: 14px !important;
+  gap: 11px !important;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 11px;
+  background: var(--dashboard-surface);
+  box-shadow: var(--dashboard-shadow);
+}
+
+:is(.analyst-metric-icon, .im-kpi-icon, .lm-kpi-icon, .manager-kpi-icon, .wo-kpi-icon, .proc-kpi-icon, .admin-kpi-icon) {
+  display: grid;
+  width: 36px !important;
+  height: 36px !important;
+  flex: 0 0 36px !important;
+  place-items: center;
+  border: 1px solid #f1e7b6 !important;
+  border-radius: 10px !important;
+  background: linear-gradient(145deg,#fffdf4,#fff4c4) !important;
+  color: #806600 !important;
+  font-size: 17px !important;
+}
+
+:is(.analyst-metric strong, .im-kpi strong, .lm-kpi strong, .manager-kpi strong, .wo-kpi strong, .proc-kpi-body strong, .admin-kpi strong) {
+  color: #191919 !important;
+  font-size: 21px !important;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+:is(.analyst-metric > div > span, .analyst-metric small, .im-kpi-label, .im-kpi small, .lm-kpi-label, .lm-kpi small, .manager-kpi > span:last-child, .manager-kpi small, .wo-kpi-label, .wo-kpi small, .proc-kpi-body > span, .proc-kpi-body small, .admin-kpi small, .admin-kpi em) {
+  color: var(--dashboard-muted);
+  font-size: 11px !important;
+  line-height: 1.4;
+}
+
+:is(.manager-kpi > div > span, .manager-kpi > div > small) {
+  color: var(--dashboard-muted);
+  font-size: 11px !important;
+}
+
+:is(.analyst-panel-header h2, .analyst-section-heading h2, .im-card-heading h2, .im-chart h3, .lm-card-heading h2, .lm-chart h3, .manager-card h2, .wo-card h2, .proc-card h2, .admin-card h2) {
+  color: #222 !important;
+  font-size: 13px !important;
+  font-weight: 720;
+}
+
+:is(.analyst-surface, .im-card, .im-chart, .lm-card, .lm-chart, .manager-card, .wo-card, .proc-card, .admin-card) {
+  border: 1px solid var(--dashboard-border);
+  border-radius: 11px;
+  background: var(--dashboard-surface);
+  box-shadow: var(--dashboard-shadow);
+}
+
+:is(.analyst-panel-header, .analyst-section-heading, .im-card-heading, .lm-card-heading, .manager-card-heading, .wo-card-heading, .proc-card-heading, .admin-card-heading) h2 {
+  color: #222;
+  font-size: 13px;
+  font-weight: 720;
+}
+
+:is(.analyst-panel-header p, .analyst-section-heading p, .im-card-heading p, .lm-card-heading p, .manager-card-heading p, .wo-card-heading p, .proc-card-heading p, .admin-card-heading p) {
+  color: #777a80;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+:is(.analyst-table, .im-table, .lm-table, .manager-table, .wo-table, .proc-card table, .admin-table) {
+  color: #383838;
+}
+
+:is(.analyst-table, .im-table, .lm-table, .manager-table, .wo-table, .proc-card table, .admin-table) :is(th, td) {
+  font-size: 11px !important;
+  line-height: 1.45;
+}
+
+:is(.analyst-table, .im-table, .lm-table, .manager-table, .wo-table, .proc-card table, .admin-table) th {
+  background: #f7f7f4;
+  color: #686a6d;
+  font-size: 10px !important;
+}
+
+:is(.analyst-button, .im-button, .lm-button, .manager-button, .wo-button, .proc-button, .admin-action) {
+  min-height: 34px;
+  border-radius: 7px;
+  background: var(--dashboard-accent);
+  color: #191919;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+:is(.analyst-button:hover, .im-button:hover, .lm-button:hover, .manager-button:hover, .wo-button:hover, .proc-button:hover:not(:disabled), .admin-action:hover:not(:disabled)) {
+  background: #e8ba0c;
+}
+
+:is(.analyst-button-secondary, .im-button-light, .lm-button-light, .manager-button-secondary, .wo-button-secondary, .proc-button-muted, .admin-action-muted) {
+  border-color: #deded8;
+  background: #fff;
+  color: #383838;
+}
+
+:is(.analyst-button-secondary:hover, .im-button-light:hover, .lm-button-light:hover, .manager-button-secondary:hover, .wo-button-secondary:hover, .proc-button-muted:hover:not(:disabled), .admin-action-muted:hover:not(:disabled)) {
+  background: #fffdf4;
+}
+
+:is(.analyst-sidebar-user, .im-user, .lm-user, .manager-sidebar-user, .wo-sidebar-user, .proc-user, .admin-profile) {
+  border-top-color: #303030;
+}
+
+:is(.analyst-avatar, .im-avatar, .lm-avatar, .wo-avatar, .admin-avatar) {
+  width: 32px;
+  height: 32px;
+  flex-basis: 32px;
+  border-radius: 9px;
+  background: var(--dashboard-accent);
+  color: #191919;
+}
+
+@media (max-width: 1120px) {
+  :is(.analyst-sidebar, .im-sidebar, .lm-sidebar, .manager-sidebar, .wo-sidebar, .proc-sidebar, .admin-sidebar) { width: 220px; }
+  :is(.analyst-content, .im-content, .lm-content, .manager-content, .wo-content, .proc-content, .admin-content) { margin-left: 220px; }
+  :is(.analyst-page, .im-page, .lm-page, .manager-page, .wo-page, .proc-main, .admin-main) { padding-inline: 18px; }
+}
+
+@media (max-width: 760px) {
+  :is(.analyst-sidebar, .im-sidebar, .lm-sidebar, .manager-sidebar, .wo-sidebar, .proc-sidebar, .admin-sidebar) {
+    position: relative;
+    width: 100%;
+    max-height: 255px;
+    padding: 0 12px 10px;
+  }
+  :is(.analyst-content, .im-content, .lm-content, .manager-content, .wo-content, .proc-content, .admin-content) { margin-left: 0; }
+  :is(.analyst-topbar, .im-topbar, .lm-topbar, .manager-topbar, .wo-topbar, .proc-topbar, .admin-topbar) {
+    position: relative;
+    min-height: 58px;
+    padding: 10px 14px;
+  }
+  :is(.analyst-page, .im-page, .lm-page, .manager-page, .wo-page, .proc-main, .admin-main) { padding: 13px 12px 28px; }
+}

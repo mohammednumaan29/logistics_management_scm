@@ -1,0 +1,96 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose Your Role | DisruptionIQ</title>
+  <link rel="stylesheet" href="/src/role-selection.css" />
+  <script type="module" src="/src/role-selection.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">D</span>
+        <span>Disruption<span class="accent">IQ</span></span>
+      </a>
+      <span class="step-label">STEP 1 OF 2</span>
+    </header>
+
+    <section class="intro-copy">
+      <p class="eyebrow">WELCOME TO DISRUPTIONIQ</p>
+      <h1>Choose your <span class="accent">role</span></h1>
+      <p class="subtitle">Select your role to continue to your workspace.</p>
+    </section>
+
+    <form id="role-form">
+      <div class="role-grid">
+        <button type="button" class="role-card" data-role="Operations Analyst">
+          <span class="role-icon"><i data-lucide="chart-no-axes-combined"></i></span>
+          <span class="role-name">Operations Analyst</span>
+          <span class="role-description">Monitor disruptions, shipments, inventory and recovery options.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card" data-role="Inventory Manager">
+          <span class="role-icon"><i data-lucide="boxes"></i></span>
+          <span class="role-name">Inventory Manager</span>
+          <span class="role-description">Manage inventory, replenishment, receiving, and stock accuracy.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card" data-role="Logistics &amp; Transportation Manager">
+          <span class="role-icon"><i data-lucide="truck"></i></span>
+          <span class="role-name">Logistics &amp; Transportation Manager</span>
+          <span class="role-description">Manage shipments, delivery schedules, carriers, fleet, and disruptions.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card" data-role="Supply Chain Manager">
+          <span class="role-icon"><i data-lucide="network"></i></span>
+          <span class="role-name">Supply Chain Manager</span>
+          <span class="role-description">Review operational risks and coordinate recovery decisions.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card" data-role="Warehouse Operator">
+          <span class="role-icon"><i data-lucide="warehouse"></i></span>
+          <span class="role-name">Warehouse Operator</span>
+          <span class="role-description">Monitor shipments, warehouse stock, and assigned recovery progress.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card" data-role="Procurement Approver">
+          <span class="role-icon"><i data-lucide="clipboard-check"></i></span>
+          <span class="role-name">Procurement Approver</span>
+          <span class="role-description">Evaluate procurement impact and review eligible recovery-plan decisions.</span>
+          <span class="check">✓</span>
+        </button>
+
+        <button type="button" class="role-card role-card-wide" data-role="Administrator">
+          <span class="role-icon"><i data-lucide="shield-check"></i></span>
+          <span class="role-name">Administrator</span>
+          <span class="role-description">Monitor supply-chain operations, recovery workflows, imports and audit visibility.</span>
+          <span class="check">✓</span>
+        </button>
+      </div>
+
+      <p id="role-message" class="form-message" aria-live="polite"></p>
+
+      <div class="actions">
+        <a class="back-link" href="/">← Back to intro</a>
+        <button class="primary-button" type="submit">
+          Continue to login <span>→</span>
+        </button>
+      </div>
+    </form>
+
+    <footer>DISRUPTIONIQ · SUPPLY CHAIN INTELLIGENCE</footer>
+  </main>
+  <script>
+  lucide.createIcons();
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Supply Chain Manager</title>
+</head>
+<body>
+  <div class="manager-shell">
+    <aside class="manager-sidebar" aria-label="Supply chain management navigation">
+      <a class="manager-brand" href="/" aria-label="DisruptionIQ home"><span class="manager-brand-mark">D</span><span>Disruption<span>IQ</span></span></a>
+      <p class="manager-nav-label">Management workspace</p>
+      <nav class="manager-nav">
+        <a href="#overview" class="is-active"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.5"/><rect x="13.5" y="10.5" width="7" height="10" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Overview</a>
+        <a href="#tower"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11l3 4h4v7H3z"/><path d="M14 7v4h6"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Supply Chain Control Tower</a>
+        <a href="#disruptions"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 17H3z"/><path d="M12 9v4m0 3h.01"/></svg>Disruption Overview</a>
+        <a href="#risks"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m8 12 2.5 2.5L16 9"/></svg>Risk Assessment Review</a>
+        <a href="#approvals"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M8.5 13l2.2 2.2 4.8-5"/></svg>Recovery Plan Approvals<span class="manager-nav-count" id="nav-pending-count">0</span></a>
+        <a href="#execution"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></svg>Recovery Execution</a>
+        <a href="#performance"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19V5m0 14h16"/><path d="m7 15 4-4 3 2 5-6"/><path d="M16 7h3v3"/></svg>Operational Performance</a>
+        <a href="#monitoring"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Recovery Monitoring</a>
+        <a href="#audit"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg>Audit &amp; Decision History</a>
+        <a href="#reports"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 20V10m5 10V4m5 16v-7m5 7V7"/><path d="M2 20h20"/></svg>Reports &amp; Analytics</a>
+        <a href="#notifications"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>Notifications<span class="manager-nav-count" id="nav-notification-count">0</span></a>
+        <a href="#settings"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 2.9-.2-.1a1.7 1.7 0 0 0-1.8.1l-.2.1h-3.4l-.1-.2a1.7 1.7 0 0 0-1.5-1.1 1.7 1.7 0 0 0-1.7.9l-.1.2-3-1.7.1-.2a1.7 1.7 0 0 0-.1-1.8l-.1-.2v-3.4l.2-.1a1.7 1.7 0 0 0 1.1-1.5 1.7 1.7 0 0 0-.9-1.7l-.2-.1 1.7-3 .2.1a1.7 1.7 0 0 0 1.8-.1l.2-.1h3.4l.1.2a1.7 1.7 0 0 0 1.5 1.1 1.7 1.7 0 0 0 1.7-.9l.1-.2 3 1.7-.1.2a1.7 1.7 0 0 0 .1 1.8l.1.2z"/></svg>Settings</a>
+      </nav>
+      <div class="manager-sidebar-user"><span class="manager-avatar">SC</span><span><strong id="sidebar-name">Supply Chain Manager</strong><small>Management · Backend</small></span></div>
+      <a class="manager-exit" href="/">← <span>Exit workspace</span></a>
+    </aside>
+
+    <div class="manager-content">
+      <header class="manager-topbar">
+        <div><span class="manager-role">Supply Chain Manager</span><span class="manager-topbar-context">Decision workspace</span></div>
+        <div class="manager-toolbar">
+          <label class="manager-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="manager-search" type="search" placeholder="Search disruptions and plans" aria-label="Search management records"></label>
+          <span id="manager-date" class="manager-date"></span>
+          <span class="manager-demo-pill"><i></i>Live backend data</span>
+          <span class="manager-avatar manager-avatar-top">SC</span>
+        </div>
+      </header>
+
+      <main class="manager-page">
+        <section class="manager-view" id="view-overview" data-page="overview">
+          <div class="manager-heading manager-overview-welcome"><div><p class="manager-eyebrow">SUPPLY CHAIN COMMAND</p><h1>Welcome, Supply Chain Manager</h1><p>Review network risk, decisions, and recovery outcomes in one place.</p></div><span class="manager-demo-note">Backend records · estimates and recorded outcomes are labeled separately</span></div>
+          <div class="manager-kpis" id="overview-kpis"></div>
+          <div class="manager-overview-grid">
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Disruption status</h2><p>Current operational records</p></div></div><div id="chart-disruption-status" class="manager-bars"></div></article>
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Recovery plan status</h2><p>Approval and execution are separate</p></div></div><div id="chart-plan-status" class="manager-bars"></div></article>
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Disruption trend</h2><p>Illustrative records by period</p></div></div><div id="chart-disruption-trend" class="manager-bars"></div></article>
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Recovery performance</h2><p>Recorded outcomes vs estimates</p></div></div><div id="chart-recovery-performance" class="manager-bars"></div></article>
+          </div>
+          <div class="manager-overview-lower">
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Needs management attention</h2><p>Prioritized by severity and pending decisions</p></div><a href="#approvals">Review queue →</a></div><div id="attention-list" class="manager-attention-list"></div></article>
+            <article class="manager-card"><div class="manager-card-heading"><div><h2>Recent management activity</h2><p>Latest decisions and execution updates</p></div><a href="#audit">Audit history →</a></div><div id="recent-activity" class="manager-recent-list"></div></article>
+          </div>
+        </section>
+
+        <section class="manager-view" id="view-tower" data-page="tower" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">NETWORK OPERATIONS</p><h1>Supply Chain Control Tower</h1><p>Consolidated disruption, order, shipment, supplier, and warehouse exposure.</p></div></div>
+          <div id="tower-summary" class="manager-summary-grid"></div>
+          <article class="manager-card"><div class="manager-card-heading"><div><h2>Network exceptions</h2><p>Search a disruption to open impact and recovery details.</p></div></div><div class="manager-filter-row"><label>Search<input id="tower-search" type="search" placeholder="Disruption, order, shipment, supplier"></label><label>Severity<select id="tower-severity"><option value="all">All severities</option><option>critical</option><option>high</option><option>medium</option><option>low</option></select></label><label>Status<select id="tower-status"><option value="all">All statuses</option><option value="active">Active</option><option>open</option><option>acknowledged</option><option>investigating</option><option>resolved</option></select></label></div><div class="manager-table-wrap"><table><thead><tr><th>Disruption</th><th>Orders / shipments</th><th>Supplier / warehouse</th><th>Delayed / shortage</th><th>Recovery</th><th>Actions</th></tr></thead><tbody id="tower-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-disruptions" data-page="disruptions" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">RISK EXPOSURE</p><h1>Disruption overview</h1><p>Sortable view of shared Operations Analyst incident records and their network impact.</p></div></div>
+          <article class="manager-card"><div class="manager-filter-row"><label>Search<input id="disruption-search" type="search" placeholder="Title, category, linked record"></label><label>Category<select id="disruption-category"><option value="all">All categories</option></select></label><label>Severity<select id="disruption-severity"><option value="all">All severities</option><option>critical</option><option>high</option><option>medium</option><option>low</option></select></label><label>Status<select id="disruption-status"><option value="all">All statuses</option><option value="active">Active</option><option>open</option><option>acknowledged</option><option>investigating</option><option>resolved</option></select></label><label>Sort<select id="disruption-sort"><option value="risk">Risk score: high to low</option><option value="newest">Newest first</option><option value="severity">Severity</option><option value="title">Title</option></select></label></div><div class="manager-table-wrap"><table><thead><tr><th>Disruption</th><th>Category / severity</th><th>Risk score</th><th>Orders</th><th>Shipments</th><th>Suppliers / warehouses</th><th>Status</th><th></th></tr></thead><tbody id="disruption-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-risks" data-page="risks" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">ANALYST ASSESSMENTS</p><h1>Risk assessment review</h1><p>Inspect estimates and factors without changing original assessment or incident records.</p></div></div>
+          <article class="manager-card"><div class="manager-info-banner">Risk scores come from the backend risk engine; AI explanations come from the AI service when reachable, with labeled deterministic fallback. Simulations are kept separate from recorded actual results.</div><div class="manager-table-wrap"><table><thead><tr><th>Disruption</th><th>Risk score / level</th><th>Risk factors</th><th>Affected orders</th><th>Simulation estimate</th><th>Actual result</th><th></th></tr></thead><tbody id="risk-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-approvals" data-page="approvals" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">DECISION QUEUE</p><h1>Recovery plan approvals</h1><p>Plans submitted by Operations Analysts. Self-created plans cannot be approved by their creator.</p></div><span class="manager-count-chip" id="approval-queue-count"></span></div>
+          <article class="manager-card"><div class="manager-info-banner">Approval is a separate decision from execution authorization. Plan simulations are estimates; actuals only appear after execution updates.</div><div class="manager-filter-row"><label>Search<input id="approval-search" type="search" placeholder="Plan, disruption, strategy, creator"></label><label>Approval status<select id="approval-status"><option value="all">All approval statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="modification_requested">Modification requested</option></select></label></div><div class="manager-table-wrap"><table><thead><tr><th>Plan / disruption</th><th>Submitted by</th><th>Strategy</th><th>Cost / recovery</th><th>Risk reduction</th><th>Simulation outcome</th><th>Approval status</th><th>Actions</th></tr></thead><tbody id="approval-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-execution" data-page="execution" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">AUTHORIZED RECOVERY</p><h1>Recovery execution</h1><p>Authorize approved plans only after every additional approval requirement is satisfied.</p></div></div>
+          <article class="manager-card"><div class="manager-info-banner">Authorization never follows automatically from approval. Warehouse and procurement tasks are created only after all required approvals and a separate manager authorization.</div><div class="manager-table-wrap"><table><thead><tr><th>Plan / disruption</th><th>Strategy</th><th>Approval</th><th>Execution authorization</th><th>Required additional approvals</th><th>Tasks</th><th>Action</th></tr></thead><tbody id="execution-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-performance" data-page="performance" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">OUTCOME ANALYTICS</p><h1>Operational performance</h1><p>Track recovery success, decision speed, disruption patterns, and estimated versus recorded cost.</p></div></div>
+          <div class="manager-filter-row manager-performance-filters"><label>Period<select id="performance-period"><option value="all">All history</option><option value="30">Last 30 days</option><option value="7">Last 7 days</option></select></label><label>Category<select id="performance-category"><option value="all">All categories</option></select></label></div>
+          <div id="performance-kpis" class="manager-summary-grid"></div>
+          <div class="manager-overview-grid"><article class="manager-card"><h2>Disruption trends</h2><div id="performance-disruptions" class="manager-bars"></div></article><article class="manager-card"><h2>Planned vs actual recovery cost</h2><p class="manager-muted">Actuals only reflect recorded outcomes.</p><div id="performance-cost" class="manager-bars"></div></article><article class="manager-card"><h2>Recovery time (days)</h2><div id="performance-time" class="manager-bars"></div></article><article class="manager-card"><h2>Approval time (hours)</h2><div id="performance-approval" class="manager-bars"></div></article></div>
+        </section>
+
+        <section class="manager-view" id="view-monitoring" data-page="monitoring" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">LIVE RECOVERY WORK</p><h1>Recovery monitoring</h1><p>Read-only manager view of assigned tasks and execution-user updates.</p></div></div>
+          <div id="monitoring-list" class="manager-monitoring-list"></div>
+        </section>
+
+        <section class="manager-view" id="view-audit" data-page="audit" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">IMMUTABLE HISTORY</p><h1>Audit &amp; decision history</h1><p>Append-only record of decisions, required approvals, authorizations, and task updates.</p></div><button class="manager-button manager-button-secondary" id="audit-export" type="button">Export CSV</button></div>
+          <article class="manager-card"><div class="manager-filter-row"><label>Search<input id="audit-search" type="search" placeholder="User, plan, action, comments"></label><label>Role<select id="audit-role"><option value="all">All roles</option></select></label></div><div class="manager-table-wrap"><table><thead><tr><th>Timestamp</th><th>User / role</th><th>Plan</th><th>Action</th><th>Previous → new status</th><th>Comments</th></tr></thead><tbody id="audit-table"></tbody></table></div></article>
+        </section>
+
+        <section class="manager-view" id="view-reports" data-page="reports" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">DECISION SUPPORT</p><h1>Reports &amp; analytics</h1><p>Filter and export supply-chain, risk, approval, cost, time, execution, and audit reports.</p></div><div class="manager-heading-actions"><button class="manager-button manager-button-secondary" id="report-csv" type="button">Export CSV</button><button class="manager-button" id="report-pdf" type="button">Print / Save PDF</button></div></div>
+          <article class="manager-card"><div class="manager-filter-row"><label>Report<select id="report-type"><option value="performance">Supply Chain Performance Report</option><option value="disruptions">Disruption Analysis Report</option><option value="risks">Risk Assessment Report</option><option value="approvals">Recovery Approval Report</option><option value="success">Recovery Success Report</option><option value="cost">Recovery Cost Analysis</option><option value="time">Recovery Time Analysis</option><option value="execution">Execution Performance Report</option><option value="audit">Decision Audit Report</option></select></label><label>Category<select id="report-category"><option value="all">All categories</option></select></label><label>From<input type="date" id="report-from"></label><label>To<input type="date" id="report-to"></label><button class="manager-button manager-button-secondary" id="report-apply" type="button">Apply filters</button></div><div id="report-summary" class="manager-report-summary"></div><div class="manager-table-wrap"><table><thead id="report-head"></thead><tbody id="report-table"></tbody></table></div><p class="manager-footnote">Report values come from backend records and recorded recovery outcomes. Print and choose “Save as PDF” for PDF export.</p></article>
+        </section>
+
+        <section class="manager-view" id="view-notifications" data-page="notifications" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">MANAGEMENT INBOX</p><h1>Notifications</h1><p>New submissions, critical risk, outstanding approvals, and recovery task updates.</p></div></div>
+          <div id="notification-list" class="manager-notification-list"></div>
+        </section>
+
+        <section class="manager-view" id="view-settings" data-page="settings" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">PERSONAL WORKSPACE</p><h1>Settings</h1><p>Manage your profile and management dashboard preferences.</p></div></div>
+          <article class="manager-card manager-settings">
+            <label>Display name<input id="settings-name" type="text"></label>
+            <label>Operating region<select id="settings-region"><option value="all">All regions</option><option value="north">North</option><option value="south">South</option><option value="west">West</option></select></label>
+            <label class="manager-check"><input id="settings-notifications" type="checkbox"> Enable management notifications</label>
+            <label class="manager-check"><input id="settings-compact" type="checkbox"> Compact dashboard tables</label>
+            <button class="manager-button" id="settings-save" type="button">Save preferences</button><p id="settings-status" class="manager-settings-status" aria-live="polite"></p>
+            <p class="manager-footnote">Role administration is not available in this workspace. Profile and preferences are stored locally in this browser.</p>
+          </article>
+        </section>
+
+        <section class="manager-view manager-detail-view" id="view-detail" data-page="detail" hidden>
+          <div class="manager-heading"><div><p class="manager-eyebrow">RECORD DETAIL</p><h1 id="detail-title">Record details</h1><p id="detail-subtitle">Disruption impact, assessment, and recovery history.</p></div><button class="manager-button manager-button-secondary" id="detail-back" type="button">← Back</button></div>
+          <div id="detail-content"></div>
+        </section>
+        <div id="manager-toast" class="manager-toast" role="status" aria-live="polite"></div>
+      </main>
+    </div>
+  </div>
+  <script type="module" src="/src/supply-chain-manager-page.js"></script>
+</body>
+</html>

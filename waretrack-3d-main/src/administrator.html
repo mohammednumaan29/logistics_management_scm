@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Administrator</title>
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-sidebar" aria-label="Administrator navigation">
+      <a class="admin-brand" href="/" aria-label="DisruptionIQ home"><span class="admin-brand-mark">D</span><span>Disruption<span>IQ</span></span></a>
+      <p class="admin-nav-label">Administrator workspace</p>
+      <nav class="admin-nav">
+        <a href="#dashboard" data-page="dashboard" class="is-active"><span class="admin-icon">▦</span>Dashboard</a>
+        <a href="#operations" data-page="operations"><span class="admin-icon">◫</span>All Operational Pages</a>
+        <details class="admin-nav-group" open>
+          <summary><span class="admin-icon">⌄</span>Browse operational modules<span class="admin-chevron">⌄</span></summary>
+          <div class="admin-subnav">
+            <a href="#shipments" data-page="shipments">Shipments</a>
+            <a href="#suppliers" data-page="suppliers">Suppliers</a>
+            <a href="#warehouses" data-page="warehouses">Warehouses</a>
+            <a href="#inventory" data-page="inventory">Inventory</a>
+            <a href="#orders" data-page="orders">Orders</a>
+            <a href="#products" data-page="products">Products</a>
+            <a href="#customers" data-page="customers">Customers</a>
+            <a href="#disruptions" data-page="disruptions">Disruption Management</a>
+            <a href="#impact" data-page="impact">Order Impact Analysis</a>
+            <a href="#risk" data-page="risk">Shipment Risk Assessment</a>
+            <a href="#ai-insights" data-page="ai-insights">AI Risk Insights</a>
+          </div>
+        </details>
+        <a href="#recovery-planning" data-page="recovery-planning"><span class="admin-icon">⌁</span>Recovery Planning</a>
+        <a href="#plans" data-page="plans"><span class="admin-icon">▱</span>Recovery Plans</a>
+        <a href="#approvals" data-page="approvals"><span class="admin-icon">✓</span>Pending Approvals<span class="admin-nav-count" id="admin-pending-count"></span></a>
+        <a href="#tracking" data-page="tracking"><span class="admin-icon">◷</span>Recovery Tracking</a>
+        <a href="#data-import" data-page="data-import"><span class="admin-icon">⇧</span>Data Import</a>
+        <a href="#notifications" data-page="notifications"><span class="admin-icon">♧</span>Notifications<span class="admin-nav-count" id="admin-notification-count"></span></a>
+        <a href="#audit" data-page="audit"><span class="admin-icon">≡</span>Audit Logs</a>
+      </nav>
+      <div class="admin-profile">
+        <span class="admin-avatar">AD</span>
+        <span><strong>Administrator</strong><small>Platform overview · Backend</small></span>
+      </div>
+      <a class="admin-exit" href="/">← <span>Exit workspace</span></a>
+    </aside>
+
+    <div class="admin-content">
+      <header class="admin-topbar">
+        <div class="admin-breadcrumb"><strong id="admin-current-title">Dashboard</strong><span>Administrator workspace</span></div>
+        <div class="admin-toolbar">
+          <label class="admin-search"><span aria-hidden="true">⌕</span><input id="admin-search" type="search" placeholder="Search this page" aria-label="Search current page"></label>
+          <span id="admin-date" class="admin-date"></span>
+          <span class="admin-demo"><i></i>Live backend data</span>
+          <span class="admin-avatar admin-avatar-top" aria-label="Administrator profile">AD</span>
+        </div>
+      </header>
+      <main class="admin-main">
+        <div class="admin-notice" role="status"><strong>Backend workspace</strong><span>Operational records, recovery history, notifications, and audit events are loaded from the DisruptionIQ Spring Boot API using your authenticated session. Approvals, execution, imports, and administrative actions are authorized by backend role checks.</span></div>
+        <div id="admin-page" class="admin-page" aria-live="polite"></div>
+      </main>
+    </div>
+  </div>
+  <dialog class="admin-dialog" id="admin-detail-dialog" aria-labelledby="admin-detail-title">
+    <div class="admin-dialog-head"><div><p class="admin-eyebrow">RECORD DETAILS</p><h2 id="admin-detail-title">Details</h2></div><button class="admin-icon-button" type="button" data-close-dialog aria-label="Close details">×</button></div>
+    <div id="admin-detail-content" class="admin-detail-content"></div>
+  </dialog>
+  <script type="module" src="/src/administrator-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#191919">
+  <title>DisruptionIQ | Warehouse Operator</title>
+</head>
+<body>
+  <div class="wo-shell">
+    <aside class="wo-sidebar" aria-label="Warehouse operator navigation">
+      <a class="wo-brand" href="/" aria-label="DisruptionIQ home"><span class="wo-brand-mark">D</span><span>Disruption<span>IQ</span></span></a>
+      <p class="wo-nav-label">Warehouse workspace</p>
+      <nav class="wo-nav">
+        <a href="#overview" class="is-active"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.5"/><rect x="13.5" y="10.5" width="7" height="10" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/></svg>Overview</a>
+        <a href="#shipments"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h11l3 4h4v7H3z"/><path d="M14 7v4h6"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Shipments</a>
+        <a href="#warehouses"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 9 9-6 9 6v11H3z"/><path d="M7 20v-7h10v7"/></svg>Warehouses</a>
+        <a href="#inventory"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8M12 13v9"/></svg>Inventory</a>
+        <a href="#assignments"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M8.5 13l2.2 2.2 4.8-5"/></svg>Recovery Assignments</a>
+        <a href="#tracking"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Recovery Tracking</a>
+        <a href="#activity"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 12h4l2.5-7 4 14 2.5-7h3"/></svg>Activity Log</a>
+        <a href="#notifications"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/><path d="M10 21h4"/></svg>Notifications<span class="wo-count" id="wo-notification-count">0</span></a>
+        <a href="#settings"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-1.7 2.9-.2-.1a1.7 1.7 0 0 0-1.8.1l-.2.1h-3.4l-.1-.2a1.7 1.7 0 0 0-1.5-1.1 1.7 1.7 0 0 0-1.7.9l-.1.2-3-1.7.1-.2a1.7 1.7 0 0 0-.1-1.8l-.1-.2v-3.4l.2-.1a1.7 1.7 0 0 0 1.1-1.5 1.7 1.7 0 0 0-.9-1.7l-.2-.1 1.7-3 .2.1a1.7 1.7 0 0 0 1.8-.1l.2-.1h3.4l.1.2a1.7 1.7 0 0 0 1.5 1.1 1.7 1.7 0 0 0 1.7-.9l.1-.2 3 1.7-.1.2a1.7 1.7 0 0 0 .1 1.8l.1.2z"/></svg>Settings</a>
+        <a href="#help"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.8 9a2.3 2.3 0 1 1 3.9 1.7c-1 .9-1.7 1.3-1.7 2.8M12 17h.01"/></svg>Help &amp; Support</a>
+      </nav>
+      <div class="wo-sidebar-user"><span class="wo-avatar">WO</span><span><strong id="wo-sidebar-name">Warehouse Operator</strong><small id="wo-sidebar-username">WO-001 · Backend</small></span></div>
+      <a class="wo-exit" href="/">← <span>Exit workspace</span></a>
+    </aside>
+
+    <div class="wo-content">
+      <header class="wo-topbar">
+        <div><strong>Warehouse Operator</strong><span>Operations workspace</span></div>
+        <div class="wo-toolbar"><label class="wo-search"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg><input id="wo-global-search" type="search" placeholder="Search shipments, plans, inventory" aria-label="Search warehouse records"></label><span id="wo-date"></span><span class="wo-demo-pill"><i></i><span id="wo-data-mode">Live backend data</span></span><span class="wo-avatar wo-avatar-top">WO</span></div>
+      </header>
+
+      <main class="wo-page">
+        <section class="wo-view" id="view-overview" data-page="overview">
+          <div class="wo-welcome"><div><p class="wo-eyebrow">WAREHOUSE OPERATIONS</p><h1>Welcome, <span id="wo-welcome-name">Warehouse Operator</span></h1><p>Monitor assigned recovery work, shipment movement, and warehouse stock.</p></div><span class="wo-source-note" id="wo-source-note">Backend records from the DisruptionIQ workspace</span></div>
+          <div class="wo-kpis" id="wo-kpis"></div>
+          <article class="wo-card"><div class="wo-card-heading"><div><h2>Assigned recovery tasks</h2><p>Only authorized tasks assigned to the Warehouse Operator role are shown in this workspace.</p></div><a href="#assignments" class="wo-text-link">View assignments →</a></div>
+            <div class="wo-filter-row"><label>Task status<select id="overview-task-filter"><option value="all">All</option><option value="pending">Pending</option><option value="in_progress">In progress</option><option value="completed">Completed</option><option value="blocked">Blocked</option></select></label></div>
+            <div class="wo-table-wrap"><table class="wo-table"><thead><tr><th>Plan / task</th><th>Shipment</th><th>Approved strategy</th><th>Estimated days</th><th>Status</th><th>Progress</th><th>Last updated</th><th></th></tr></thead><tbody id="overview-task-table"></tbody></table></div>
+          </article>
+          <div class="wo-two-col">
+            <article class="wo-card"><div class="wo-card-heading"><div><h2>Shipment overview</h2><p>Shipments connected to assigned warehouse recovery activity.</p></div><a href="#shipments" class="wo-text-link">All shipments →</a></div><div class="wo-table-wrap"><table class="wo-table"><thead><tr><th>Shipment</th><th>Supplier / origin</th><th>Destination</th><th>Status</th><th>Expected</th><th>Quantity</th></tr></thead><tbody id="overview-shipments"></tbody></table></div></article>
+            <article class="wo-card"><div class="wo-card-heading"><div><h2>Operational alerts</h2><p>Signals from assigned tasks and linked records.</p></div></div><div id="wo-alert-list" class="wo-alert-list"></div></article>
+          </div>
+          <article class="wo-card"><div class="wo-card-heading"><div><h2>Recent activity</h2><p>Recorded updates for this operator only.</p></div><a href="#activity" class="wo-text-link">Activity log →</a></div><div id="overview-activity" class="wo-timeline"></div></article>
+        </section>
+
+        <section class="wo-view" id="view-shipments" data-page="shipments" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">NETWORK VISIBILITY</p><h1>Shipments</h1><p>Read-only shipment details from the backend operational dataset.</p></div></div>
+          <div class="wo-filter-row"><label>Search<input id="shipment-search" type="search" placeholder="Shipment, supplier, destination"></label><label>Status<select id="shipment-status"><option value="all">All statuses</option><option value="pending-dispatch">Pending dispatch</option><option value="in-transit">In transit</option><option value="delayed">Delayed</option><option value="delivered">Delivered</option><option value="failed">Failed</option></select></label><label>Warehouse<select id="shipment-warehouse"><option value="all">All warehouses</option></select></label></div>
+          <article class="wo-card">          <div class="wo-table-wrap"><table class="wo-table"><thead><tr><th>Shipment ID</th><th>Quantity</th><th>Status</th><th>Expected delivery</th><th>Supplier / origin</th><th>Destination / delivery location</th><th>Details</th></tr></thead><tbody id="shipment-table"></tbody></table></div></article>
+        </section>
+
+        <section class="wo-view" id="view-warehouses" data-page="warehouses" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">WAREHOUSE NETWORK</p><h1>Warehouses</h1><p>View available location, capacity, and associated stock information.</p></div></div>
+          <div class="wo-info">Warehouse fields and capacity are displayed only when present in the supplied dataset. No warehouse master data can be edited here.</div>
+          <div id="warehouse-cards" class="wo-warehouse-grid"></div>
+        </section>
+
+        <section class="wo-view" id="view-inventory" data-page="inventory" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">STOCK VISIBILITY</p><h1>Inventory</h1><p>Read-only stock information for products in the shared inventory dataset.</p></div></div>
+          <div class="wo-info">Available quantity is calculated as on-hand quantity minus reserved quantity. Stock labels are frontend-derived: Critical when available is zero or less; Low when available is at or below reorder point; Healthy otherwise. No stock values are changed here. Daily demand is shown when supplied by the backend.</div>
+          <div class="wo-filter-row"><label>Search<input id="inventory-search" type="search" placeholder="Product, SKU, warehouse"></label><label>Stock status<select id="inventory-status"><option value="all">All statuses</option><option value="healthy">Healthy</option><option value="low">Low</option><option value="critical">Critical</option></select></label></div>
+          <article class="wo-card"><div class="wo-table-wrap"><table class="wo-table"><thead><tr><th>Inventory / Product</th><th>Warehouse</th><th>On hand</th><th>Reserved</th><th>Available</th><th>Reorder point</th><th>Daily demand</th><th>Status</th></tr></thead><tbody id="inventory-table"></tbody></table></div></article>
+        </section>
+
+        <section class="wo-view" id="view-assignments" data-page="assignments" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">ASSIGNED WORK</p><h1>Recovery Assignments</h1><p>Approved recovery plans with execution tasks assigned to the Warehouse Operator role.</p></div></div>
+          <div class="wo-info">Plans and strategies are read-only. Only execution-authorized assignments with an assigned Warehouse Operator task are listed. Assignment ownership is scoped to your authenticated role, and the backend authorizes every update.</div>
+          <div class="wo-filter-row"><label>Search<input id="assignment-search" type="search" placeholder="Plan, shipment, strategy"></label><label>Status<select id="assignment-status"><option value="all">All statuses</option><option value="pending">Pending</option><option value="in_progress">In progress</option><option value="completed">Completed</option><option value="blocked">Blocked</option></select></label></div>
+          <article class="wo-card"><div class="wo-table-wrap"><table class="wo-table"><thead><tr><th>Recovery plan / task</th><th>Shipment</th><th>Approved strategy</th><th>Assigned warehouse</th><th>Estimated days</th><th>Status</th><th>Progress</th><th>Last updated</th><th></th></tr></thead><tbody id="assignment-table"></tbody></table></div></article>
+        </section>
+
+        <section class="wo-view" id="view-tracking" data-page="tracking" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">PROGRESS REPORTING</p><h1>Recovery Tracking</h1><p>Report progress only on tasks assigned to your operator role.</p></div></div>
+          <div class="wo-info">Progress updates are submitted to the recovery-progress API. Success is shown only after the backend confirms the submission.</div>
+          <div id="tracking-api-status" class="wo-inline-status" role="status" aria-live="polite"></div>
+          <div id="tracking-plans" class="wo-tracking-grid"></div>
+          <article class="wo-card"><div class="wo-card-heading"><div><h2>Progress history</h2><p id="progress-history-heading">Choose an assigned recovery plan to view its updates.</p></div></div><div id="progress-history" class="wo-history"></div></article>
+        </section>
+
+        <section class="wo-view" id="view-activity" data-page="activity" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">AUDIT VISIBILITY</p><h1>Activity Log</h1><p>Recorded warehouse operator events for assigned recovery work.</p></div></div>
+          <div class="wo-info">Activity is read from existing workflow audit records and scoped to the current operator ID. No activity entries are generated by viewing this page.</div>
+          <article class="wo-card"><div id="activity-list" class="wo-timeline"></div></article>
+        </section>
+
+        <section class="wo-view" id="view-notifications" data-page="notifications" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">OPERATIONAL UPDATES</p><h1>Notifications</h1><p>Updates returned for the authenticated operator.</p></div><span id="notification-summary" class="wo-muted"></span></div>
+          <div id="notification-api-status" class="wo-inline-status" role="status" aria-live="polite"></div>
+          <div id="notification-list" class="wo-notifications"></div>
+        </section>
+
+        <section class="wo-view" id="view-settings" data-page="settings" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">PERSONAL PREFERENCES</p><h1>Settings</h1><p>View account details and manage supported local display preferences.</p></div></div>
+          <div class="wo-settings-grid">
+            <article class="wo-card"><h2>Account information</h2><dl class="wo-detail-list"><div><dt>Name</dt><dd id="settings-name">Warehouse Operator</dd></div><div><dt>Username</dt><dd id="settings-username">WO-001</dd></div><div><dt>Role</dt><dd>Warehouse Operator</dd></div><div><dt>Authentication</dt><dd id="settings-auth-state">JWT session · backend authorization enforced</dd></div></dl></article>
+            <article class="wo-card"><h2>Preferences</h2><label class="wo-check"><input id="settings-notifications" type="checkbox"> Show notification badges and alerts</label><label class="wo-check"><input id="settings-compact" type="checkbox"> Use compact tables</label><button class="wo-button" id="settings-save" type="button">Save preferences</button><p class="wo-inline-status" id="settings-message" aria-live="polite"></p><p class="wo-muted">Preferences are stored in this browser. User roles and account permissions cannot be changed here.</p></article>
+          </div>
+        </section>
+
+        <section class="wo-view" id="view-help" data-page="help" hidden>
+          <div class="wo-heading"><div><p class="wo-eyebrow">OPERATOR GUIDE</p><h1>Help &amp; Support</h1><p>Quick guidance for day-to-day warehouse recovery operations.</p></div></div>
+          <div class="wo-help-grid">
+            <article class="wo-card"><h2>Monitor shipments</h2><p>Use Shipments to search and filter the available shipment records. Open Details to review linked products and recovery assignments. Shipment data is read-only.</p></article>
+            <article class="wo-card"><h2>Review warehouse stock</h2><p>Use Warehouses for capacity and associated product records, and Inventory for on-hand, reserved, available, and reorder values. Daily demand is shown when present in the backend feed.</p></article>
+            <article class="wo-card"><h2>Open recovery assignments</h2><p>Recovery Assignments lists only approved, execution-authorized plans with tasks assigned to the Warehouse Operator role in the current backend dataset. The backend enforces assignment ownership on every update.</p></article>
+            <article class="wo-card"><h2>Report progress</h2><p>Open Recovery Tracking, select an assigned plan, then report a completion percentage and accepted status. Include a milestone, blocker, or operational note as relevant. Updates are submitted to the backend API.</p></article>
+            <article class="wo-card"><h2>Recovery statuses</h2><p><strong>Pending</strong> has not started. <strong>In progress</strong> is active work. <strong>Completed</strong> reports finished assigned work. <strong>Blocked</strong> identifies work that cannot proceed and should include a blocker description.</p></article>
+            <article class="wo-card"><h2>Access and support</h2><p>This workspace uses JWT authentication with backend role checks. Every update is authorized by the backend; never treat this page as a permission boundary.</p></article>
+          </div>
+        </section>
+        <section class="wo-view" id="view-detail" data-page="detail" hidden><div class="wo-heading"><div><p class="wo-eyebrow">RECORD DETAIL</p><h1 id="detail-title">Details</h1><p id="detail-subtitle"></p></div><button class="wo-button wo-button-secondary" id="detail-back" type="button">Back</button></div><div id="detail-content"></div></section>
+      </main>
+    </div>
+  </div>
+  <dialog id="progress-dialog" class="wo-dialog">
+    <form id="progress-form">
+      <div class="wo-dialog-heading"><div><p class="wo-eyebrow">OPERATIONAL UPDATE</p><h2 id="progress-dialog-title">Report recovery progress</h2></div><button type="button" class="wo-dialog-close" aria-label="Close dialog">×</button></div>
+      <p class="wo-muted" id="progress-dialog-context"></p>
+      <label>Completion percentage<input name="completionPercentage" type="number" min="0" max="100" step="1" required></label>
+      <label>Recovery status<select name="status" required><option value="PENDING">Pending</option><option value="IN_PROGRESS">In progress</option><option value="COMPLETED">Completed</option><option value="BLOCKED">Blocked</option></select></label>
+      <label>Milestone<input name="milestone" type="text" maxlength="240" placeholder="Milestone reached"></label>
+      <label>Blocker<textarea name="blocker" rows="2" maxlength="800" placeholder="Describe an issue preventing progress"></textarea></label>
+      <label>Operational notes<textarea name="notes" rows="3" maxlength="1200" placeholder="Additional work notes"></textarea></label>
+      <p id="progress-dialog-message" class="wo-inline-status" role="status" aria-live="polite"></p>
+      <div class="wo-dialog-actions"><button type="button" class="wo-button wo-button-secondary" id="progress-cancel">Cancel</button><button type="submit" class="wo-button" id="progress-submit">Submit update</button></div>
+    </form>
+  </dialog>
+  <script type="module" src="/src/warehouse-operator-page.js"></script>
+</body>
+</html>

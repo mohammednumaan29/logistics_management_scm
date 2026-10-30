@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172033">
+  <title>DisruptionIQ | Procurement Approver</title>
+</head>
+<body>
+  <div class="proc-shell">
+    <aside class="proc-sidebar" aria-label="Procurement Approver navigation">
+      <a class="proc-brand" href="/" aria-label="DisruptionIQ home"><span class="proc-brand-mark">D</span><span>Disruption<span>IQ</span></span></a>
+      <p class="proc-nav-label">Procurement workspace</p>
+      <nav class="proc-nav">
+        <a href="#dashboard" class="is-active"><span class="proc-icon">▦</span>Dashboard</a>
+        <a href="#shipments"><span class="proc-icon">⇢</span>Shipments</a>
+        <a href="#suppliers"><span class="proc-icon">◈</span>Suppliers</a>
+        <a href="#warehouses"><span class="proc-icon">▤</span>Warehouses</a>
+        <a href="#inventory"><span class="proc-icon">▧</span>Inventory</a>
+        <a href="#orders"><span class="proc-icon">≡</span>Orders</a>
+        <a href="#products"><span class="proc-icon">◇</span>Products</a>
+        <a href="#customers"><span class="proc-icon">♙</span>Customers</a>
+        <a href="#risk"><span class="proc-icon">⌁</span>Risk Analysis</a>
+        <a href="#plans"><span class="proc-icon">▱</span>Recovery Plans</a>
+        <a href="#approvals"><span class="proc-icon">✓</span>Pending Approvals<span class="proc-nav-count" id="nav-pending">0</span></a>
+        <a href="#notifications"><span class="proc-icon">♧</span>Notifications<span class="proc-nav-count" id="nav-notifications"></span></a>
+        <a href="#activity"><span class="proc-icon">◷</span>My Activity</a>
+      </nav>
+      <div class="proc-user"><span class="proc-avatar">PA</span><span><strong>Procurement Approver</strong><small>Approval workspace · Backend</small></span></div>
+      <a class="proc-exit" href="/">← <span>Exit workspace</span></a>
+    </aside>
+
+    <div class="proc-content">
+      <header class="proc-topbar">
+        <div><strong>Procurement Approver</strong><span>Decision workspace</span></div>
+        <div class="proc-toolbar">
+          <label class="proc-search"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Search plans and operations" aria-label="Search current data"></label>
+          <span id="current-date" class="proc-date"></span>
+          <span class="proc-demo-pill"><i></i>Live backend data</span>
+          <span class="proc-avatar proc-avatar-top">PA</span>
+        </div>
+      </header>
+
+      <main class="proc-main">
+        <div id="backend-banner" class="proc-banner" role="status">
+          <strong>Backend workspace</strong>
+          <span>Operational records are loaded from the DisruptionIQ Spring Boot API using your authenticated session. Approvals, notifications, and activity are protected by backend JWT role checks.</span>
+        </div>
+
+        <section class="proc-page" data-page="dashboard">
+          <div class="proc-heading proc-welcome"><div><p class="proc-eyebrow">PROCUREMENT DECISIONS</p><h1>Good day, Procurement Approver</h1><p>Review operational context and make informed recovery-plan decisions.</p></div><span class="proc-source">Backend records are shown; unsupported values remain unavailable.</span></div>
+          <div class="proc-kpis" id="dashboard-kpis"></div>
+          <div class="proc-dashboard-grid">
+            <article class="proc-card proc-span-2"><div class="proc-card-heading"><div><h2>Pending approval queue</h2><p>Plans awaiting a decision · review details before deciding.</p></div><a href="#approvals">Open queue →</a></div><div class="proc-table-wrap"><table><thead><tr><th>Plan</th><th>Shipment</th><th>Strategy</th><th>Estimated cost</th><th>Days</th><th>Orders saved</th><th>Created by</th><th>Created at</th><th></th></tr></thead><tbody id="dashboard-pending"></tbody></table></div></article>
+            <article class="proc-card proc-span-2"><div class="proc-card-heading"><div><h2>High-risk shipments</h2><p>Risk estimates derived from backend shipment and disruption records.</p></div><a href="#risk">View risk analysis →</a></div><div class="proc-table-wrap"><table><thead><tr><th>Shipment</th><th>Supplier</th><th>Destination</th><th>Status</th><th>Risk score</th><th>Classification</th><th>Expected delivery</th><th></th></tr></thead><tbody id="dashboard-risk"></tbody></table></div></article>
+            <article class="proc-card"><div class="proc-card-heading"><div><h2>Procurement alerts</h2><p>Signals for review; no automatic decisions.</p></div></div><div id="dashboard-alerts" class="proc-alerts"></div></article>
+            <article class="proc-card"><div class="proc-card-heading"><div><h2>Recent approval activity</h2><p>Shown only when returned by the authenticated audit API.</p></div><a href="#activity">My activity →</a></div><div id="dashboard-activity" class="proc-timeline"></div><p id="dashboard-activity-status" class="proc-muted"></p></article>
+          </div>
+          <div id="dashboard-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="shipments" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">NETWORK VISIBILITY</p><h1>Shipments</h1><p>Read-only shipment context for procurement decisions.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="shipment-search" type="search" placeholder="Shipment, supplier, destination"></label><label>Shipment status<select id="shipment-filter"><option value="all">All shipments</option><option value="in-transit">In transit</option><option value="delayed">Delayed</option><option value="disrupted">Disrupted</option><option value="delivered">Delivered</option><option value="high-risk">High risk</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Shipment</th><th>Quantity</th><th>Status</th><th>Expected delivery</th><th>Supplier / origin</th><th>Destination warehouse</th><th></th></tr></thead><tbody id="shipments-table"></tbody></table></div></article>
+          <div id="shipments-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="suppliers" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">SUPPLIER CONTEXT</p><h1>Suppliers</h1><p>Supplier records grouped from shared product and shipment data. No performance scores are inferred.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="supplier-search" type="search" placeholder="Supplier name or product"></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Supplier</th><th>Status</th><th>Lead time</th><th>Related products</th><th>Associated shipments</th><th></th></tr></thead><tbody id="suppliers-table"></tbody></table></div></article>
+          <div id="suppliers-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="warehouses" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">WAREHOUSE NETWORK</p><h1>Warehouses</h1><p>Read-only warehouse and inventory context.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="warehouse-search" type="search" placeholder="Warehouse or location"></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Warehouse</th><th>Name</th><th>Location</th><th>Storage capacity</th><th>Inventory records</th><th>Available stock</th><th></th></tr></thead><tbody id="warehouses-table"></tbody></table></div></article>
+          <div id="warehouses-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="inventory" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">STOCK FEASIBILITY</p><h1>Inventory</h1><p>Available quantity is on-hand minus reserved. Labels are derived from the backend reorder point.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="inventory-search" type="search" placeholder="Product, SKU, warehouse"></label><label>Stock status<select id="inventory-filter"><option value="all">All stock</option><option value="healthy">Healthy</option><option value="low">Low</option><option value="critical">Critical</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Inventory ID</th><th>Product</th><th>Warehouse / location</th><th>On hand</th><th>Reserved</th><th>Available</th><th>Reorder point</th><th>Daily demand</th><th>Status</th></tr></thead><tbody id="inventory-table"></tbody></table></div></article>
+          <div id="inventory-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="orders" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">CUSTOMER IMPACT</p><h1>Orders</h1><p>Shipment-linked order references from backend records; full order-master fields may be unavailable.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="order-search" type="search" placeholder="Order, customer, product"></label><label>Priority<select id="order-filter"><option value="all">All priorities</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="at-risk">At risk</option><option value="confirmed">Confirmed</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Product</th><th>Priority</th><th>Quantity</th><th>Promised delivery</th><th>Order status</th><th></th></tr></thead><tbody id="orders-table"></tbody></table></div></article>
+          <div id="orders-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="products" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">PRODUCT DIRECTORY</p><h1>Products</h1><p>Product and unit cost fields are only shown when supplied by the data source.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="product-search" type="search" placeholder="Product, category, supplier"></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Product</th><th>Category</th><th>Unit cost</th><th>Inventory records</th><th>Related orders</th><th>Related shipments</th><th></th></tr></thead><tbody id="products-table"></tbody></table></div></article>
+          <div id="products-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="customers" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">CUSTOMER VISIBILITY</p><h1>Customers</h1><p>Only customer information supplied by backend records is displayed.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="customer-search" type="search" placeholder="Customer name or ID"></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Customer</th><th>Email</th><th>Related orders</th><th>Order priorities</th><th></th></tr></thead><tbody id="customers-table"></tbody></table></div></article>
+          <div id="customers-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="risk" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">RISK REVIEW</p><h1>Risk Analysis</h1><p>Risk bands: LOW 0–24 · MEDIUM 25–49 · HIGH 50–74 · CRITICAL 75–100. Scores come from the backend risk engine.</p></div></div>
+          <div class="proc-filters"><label>Risk level<select id="risk-filter"><option value="all">All levels</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option><option value="critical">Critical</option></select></label><label>Shipment status<select id="risk-status-filter"><option value="all">All statuses</option><option value="delayed">Delayed</option><option value="in-transit">In transit</option><option value="delivered">Delivered</option><option value="pending-dispatch">Pending dispatch</option></select></label><label>Supplier<select id="risk-supplier-filter"><option value="all">All suppliers</option></select></label><label>Warehouse / destination<select id="risk-warehouse-filter"><option value="all">All destinations</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Shipment</th><th>Risk score</th><th>Classification</th><th>Disruption</th><th>Delay / cause</th><th>Supplier</th><th>Destination</th><th></th></tr></thead><tbody id="risk-table"></tbody></table></div></article>
+          <div id="risk-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="plans" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">RECOVERY REGISTER</p><h1>Recovery Plans</h1><p>Review accessible plans and their separate approval and execution statuses. Decisions are made in Pending Approvals.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="plan-search" type="search" placeholder="Plan, shipment, strategy"></label><label>Plan status<select id="plan-filter"><option value="all">All plans</option><option value="pending">Pending approval</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="in_progress">In progress</option><option value="successful">Completed</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Recovery plan</th><th>Shipment</th><th>Strategy</th><th>Approval status</th><th>Execution status</th><th>Estimated cost</th><th>Recovery days</th><th>Orders saved</th><th>Created by</th><th>Created at</th><th></th></tr></thead><tbody id="plans-table"></tbody></table></div></article>
+          <article class="proc-card"><h2>Supported recovery strategies</h2><div class="proc-strategy-list"><span><b>DO_NOTHING</b> — Maintain current course</span><span><b>REALLOCATE_STOCK</b> — Transfer available stock</span><span><b>EXPEDITE_SHIPMENT</b> — Accelerate a shipment</span><span><b>ALTERNATIVE_SUPPLIER</b> — Source from another supplier</span><span><b>SPLIT_ORDER</b> — Fulfil an order in parts</span></div></article>
+          <div id="plans-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="approvals" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">DECISION QUEUE</p><h1>Pending Approvals</h1><p>Review disruption, business impact, strategy, cost and risk before deciding.</p></div></div>
+          <div class="proc-filters"><label>Search<input id="approval-search" type="search" placeholder="Plan ID or shipment ID"></label><label>Strategy<select id="approval-strategy"><option value="all">All strategies</option></select></label><label>Sort by<select id="approval-sort"><option value="createdAt">Newest first</option><option value="cost">Estimated cost</option></select></label><label>Risk level<select id="approval-risk"><option value="all">All risk levels</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option><option value="critical">Critical</option></select></label></div>
+          <article class="proc-card"><div class="proc-table-wrap"><table><thead><tr><th>Plan</th><th>Shipment</th><th>Strategy</th><th>Estimated cost</th><th>Recovery days</th><th>Orders saved</th><th>Created by</th><th>Created at</th><th>Action</th></tr></thead><tbody id="approvals-table"></tbody></table></div></article>
+          <div id="approvals-api-status" class="proc-status" role="status"></div>
+        </section>
+
+        <section class="proc-page" data-page="review" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">DECISION REVIEW</p><h1 id="review-title">Recovery plan review</h1><p id="review-subtitle">Review the complete available context before deciding.</p></div><button class="proc-button proc-button-muted" data-navigate="approvals">← Back to queue</button></div>
+          <div id="review-content"></div>
+          <div id="review-backend-context" class="proc-detail-grid"></div>
+          <div id="review-api-status" class="proc-status" role="status"></div>
+          <div class="proc-decision-bar"><p>Approval and rejection are submitted to the backend; the backend status is never changed optimistically.</p><div><button id="review-reject" class="proc-button proc-button-danger" type="button">Reject plan</button><button id="review-approve" class="proc-button" type="button">Approve plan</button></div></div>
+        </section>
+
+        <section class="proc-page" data-page="notifications" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">OPERATIONAL UPDATES</p><h1>Notifications</h1><p>Notifications are loaded from the authenticated-user API only.</p></div><span id="notification-summary" class="proc-muted"></span></div>
+          <div id="notifications-status" class="proc-status" role="status"></div><div id="notifications-list" class="proc-notifications"></div>
+        </section>
+
+        <section class="proc-page" data-page="activity" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow">PERSONAL AUDIT</p><h1>My Activity</h1><p>Events returned by the authenticated user's audit endpoint.</p></div></div>
+          <div id="activity-status" class="proc-status" role="status"></div><div id="activity-list" class="proc-card proc-timeline"></div>
+        </section>
+
+        <section class="proc-page" data-page="detail" hidden>
+          <div class="proc-heading"><div><p class="proc-eyebrow" id="detail-eyebrow">RECORD DETAIL</p><h1 id="detail-title">Details</h1><p id="detail-subtitle"></p></div><button class="proc-button proc-button-muted" id="detail-back" type="button">Back</button></div>
+          <div id="detail-content" class="proc-detail-grid"></div><div id="detail-api-status" class="proc-status" role="status"></div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="decision-dialog" class="proc-dialog">
+    <form id="decision-form">
+      <div class="proc-dialog-head"><div><p class="proc-eyebrow">CONFIRM DECISION</p><h2 id="decision-title">Approve recovery plan?</h2></div><button type="button" class="proc-dialog-close" aria-label="Close dialog">×</button></div>
+      <p id="decision-context" class="proc-muted"></p>
+      <label id="decision-reason-label">Decision reason<textarea id="decision-reason" name="reason" rows="4" maxlength="1200" placeholder="Record the procurement rationale"></textarea></label>
+      <p id="decision-message" class="proc-status" role="status" aria-live="polite"></p>
+      <div class="proc-dialog-actions"><button type="button" class="proc-button proc-button-muted" id="decision-cancel">Cancel</button><button type="submit" class="proc-button" id="decision-confirm">Confirm decision</button></div>
+    </form>
+  </dialog>
+  <div id="proc-toast" class="proc-toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/procurement-approver-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Login | DisruptionIQ</title>
+
+  <link rel="stylesheet" href="/src/login.css" />
+  <script type="module" src="/src/login.js"></script>
+</head>
+
+<body class="login-page">
+  <main class="login-layout">
+
+    <!-- Brand -->
+    <a class="brand" href="/src/login.html">
+      <span class="brand-mark">D</span>
+      <span>Disruption<span class="accent">IQ</span></span>
+    </a>
+
+    <!-- Login card -->
+    <section class="login-panel">
+
+      <p class="eyebrow">WELCOME BACK</p>
+
+      <h1>
+        Sign in to
+        <span class="accent">your workspace</span>
+      </h1>
+
+      <p class="subtitle">
+        Enter your details to continue to DisruptionIQ.
+      </p>
+
+      <!-- Selected role -->
+      <div class="selected-role">
+        <span class="role-dot"></span>
+
+        <div class="role-info">
+          <span class="field-caption">CONTINUING AS</span>
+          <strong id="selected-role">Loading role...</strong>
+        </div>
+
+        <a href="/src/login.html">Change</a>
+      </div>
+
+      <!-- Login form -->
+      <form id="login-form">
+
+        <label for="email">Username</label>
+
+        <input
+          id="email"
+          name="email"
+          type="text"
+          placeholder="Enter your username"
+          autocomplete="username"
+          required
+        />
+
+        <div class="password-heading">
+          <label for="password">Password</label>
+
+          <button
+            type="button"
+            class="text-button"
+            id="toggle-password"
+            aria-label="Show password"
+          >Show</button>
+        </div>
+
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          required
+        />
+
+        <button class="primary-button" type="submit">
+          Continue <span aria-hidden="true">→</span>
+        </button>
+
+        <p
+          id="login-message"
+          class="form-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
+
+      <form id="create-account-form" hidden>
+        <p class="form-section-title">Create your frontend account</p>
+
+        <label for="full-name">Full Name</label>
+        <input id="full-name" name="fullName" type="text" autocomplete="name" required />
+
+        <label for="account-email">Email Address</label>
+        <input id="account-email" name="email" type="email" autocomplete="email" required />
+
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" autocomplete="username" minlength="3" required />
+
+        <label for="account-password">Password</label>
+        <input id="account-password" name="password" type="password" autocomplete="new-password" minlength="8" required />
+
+        <label for="confirm-password">Confirm Password</label>
+        <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required />
+
+        <label for="account-role">Selected Role</label>
+        <input id="account-role" name="role" type="text" readonly aria-readonly="true" />
+
+        <button class="primary-button" type="submit">
+          Create account <span aria-hidden="true">→</span>
+        </button>
+        <p id="create-account-message" class="form-message" aria-live="polite"></p>
+        <button id="back-to-sign-in" class="text-button form-back-button" type="button">← Back to sign in</button>
+      </form>
+
+      <a class="back-link" href="/src/login.html">
+        ← Back to role selection
+      </a>
+
+      <p class="prototype-note">
+        Secure sign-in · Credentials are verified by the DisruptionIQ backend.
+      </p>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="login-footer">
+      DISRUPTIONIQ · SUPPLY CHAIN INTELLIGENCE
+    </footer>
+
+  </main>
+</body>
+</html>
